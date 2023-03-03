@@ -3,10 +3,9 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      
-      <h1>kmiomiko</h1>
-    </div>
+    <>
+      {/* Aqui deben ir todas las paginas */}
+    </>
   );
 }
 
