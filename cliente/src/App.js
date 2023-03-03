@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       {/* Aqui deben ir todas las paginas */}
+      
     </>
   );
 }
