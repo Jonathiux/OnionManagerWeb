@@ -1,13 +1,11 @@
-
-import './App.css';
+import Inventario from 'pages/Inventario'
 
 function App() {
   return (
     <>
-      {/* Aqui deben ir todas las paginas */}
-      
+    <Inventario />
     </>
-  );
+  )
 }
 
 export default App;
