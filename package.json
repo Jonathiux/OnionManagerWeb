@@ -1,0 +1,30 @@
+{
+  "name": "onionmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonathiux/OnionManagerWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonathiux/OnionManagerWeb/issues"
+  },
+  "homepage": "https://github.com/Jonathiux/OnionManagerWeb#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
