@@ -1,4 +1,4 @@
-
+import Home from './pages/Home';
 import './App.css';
 import BasicExample from './pages/Servicios';
 
