@@ -1,11 +1,11 @@
 import React from "react"
 import ServicioBoton from "./servicio-botton";
-import './servicio.css'
+import '.../styles/servicio.css'
 
 
 function Servicio(){
     return(
-        <div className="menu-servicio">
+        <div className="menu-servicios">
             <div className="servicio">
                 <div className="imagen">
                     <img src="" alt="Imagen del Servicio" />

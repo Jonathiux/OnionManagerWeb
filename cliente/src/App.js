@@ -5,6 +5,7 @@ import Inventario from 'pages/Inventario'
 import { Route, Routes } from 'react-router-dom';
 import Servicio from 'componentes/Servicios';
 import BasicExample from 'pages/Servicios';
+import './styles/global.css';
 
 function App() {
   return (

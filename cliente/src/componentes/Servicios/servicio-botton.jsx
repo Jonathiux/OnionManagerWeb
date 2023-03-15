@@ -1,9 +1,9 @@
 import React from "react";
-import './servicio-boton.css'
+import '.../styles/servicio-boton.css';
 
 function ServicioBoton(){
     return(
-        <button className="button-info"> Revisar información </button>
+        <button className="button-info"> Consultar información </button>
     );
 }
 

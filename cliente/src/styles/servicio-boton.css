@@ -1,0 +1,12 @@
+.button-info{
+    width: 5rem;
+    height: 2.5rem;
+    color: var(--black);
+    border: 1px solid var(--very-light-pink);
+    border-radius: 20%;
+}
+
+.button-info:hover{
+    border: 1px solid var(--dark);
+    color: var(--white);
+}
