@@ -1,5 +1,5 @@
 import React from "react";
-import '.../styles/servicio-boton.css';
+import './servicio-boton.css';
 
 function ServicioBoton(){
     return(
