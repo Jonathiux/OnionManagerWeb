@@ -1,0 +1,41 @@
+html{
+    font-size: 62.5%;
+}
+
+:root{
+    --white: #FFFFFF;
+    --black: #000000;
+    --dark: #232830;
+    --very-light-pink: #C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD9B2;
+} 
+
+.menu-servicios{
+    margin-top: 8px;
+}
+
+.servicio{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    padding: 14px;
+    justify-content: space-between;
+    border: .1rem solid var(--very-light-pink);
+    border-radius: 20px;
+}
+
+.servicio:hover{
+    border: 1px solid var(--hospital-green);
+    background-color: var(--hospital-green);
+}
+
+.info-servicio{
+    display: flex;
+    align-items: center;
+}
+
+.info-servicio h3{
+    color: var(--black);
+    padding: 12px;
+}
