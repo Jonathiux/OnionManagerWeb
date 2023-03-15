@@ -2,17 +2,16 @@ import './index.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export default function getServicios(){
+export default function getServicios({nombreS, descripcion, img }){
   return(
-    <Card className='Card' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+    <Card className='Cards' style={{ width: '18px' }}>
+      <Card.Img variant="top" src={img} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{nombreS}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {descripcion}
         </Card.Text>
-        <Button className='ButtonS'>Go somewhere</Button>
+        <Button className='ButtonS'>Leer más</Button>
       </Card.Body>
     </Card>
   )

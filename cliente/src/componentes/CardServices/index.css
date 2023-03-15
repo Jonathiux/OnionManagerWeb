@@ -1,9 +1,13 @@
+.Cards{
+    transform: scale(1.5);
+    border-radius: 2%;
+}
+
 .ButtonS{
     background-color: brown;
     position: static;
     margin-left: 50px;
     margin-left: 50px;
-
 }
 
 .Selected{
