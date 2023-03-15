@@ -1,0 +1,30 @@
+.finanzas-container .title-container{
+    background-color: aqua;
+    width: 20%;
+    height: 800px;
+    border-radius: 10px;
+}
+
+.finanzas-container{
+    margin: 10px !important;
+}
+
+.title-text{
+    font-size: 50px;
+}
+
+.info-card{
+    background-color: aquamarine;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.grafica-container{
+    /* height: 200px; */
+    background-color: aquamarine;
+    margin: 20px;
+}   
+
+.body-container{
+    /* padding: 0px; */
+}
