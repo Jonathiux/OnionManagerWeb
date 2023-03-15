@@ -1,0 +1,18 @@
+.Card{
+    --gifShadow-size : var(--gridList-gap, 6px);
+  margin-bottom: .5em;
+  position: relative;
+}
+
+.ButtonS{
+    background-color: brown;
+    position: static;
+    margin-left: 50px;
+    margin-left: 50px;
+
+}
+
+.Selected{
+    border-color: chartreuse;
+    
+}
