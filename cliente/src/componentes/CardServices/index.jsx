@@ -1,19 +1,26 @@
 import './index.css';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import Imag  from 'componentes/imgs/Cortecnc.jpg';
 
-export default function getServicios({nombreS, descripcion, img }){
-  return(
-    <Card className='Cards' style={{ width: '18px' }}>
-      <Card.Img variant="top" src={img} />
-      <Card.Body>
-        <Card.Title>{nombreS}</Card.Title>
-        <Card.Text>
-          {descripcion}
-        </Card.Text>
-        <Button className='ButtonS'>Leer más</Button>
-      </Card.Body>
-    </Card>
+
+export default function CardService({ nombre, subtitle, descripcion }) {
+  return (
+    <>
+      <div className='content'>
+        <article className='card'>
+          <div className='temporary_text'>
+            <img className='imagen' src={Imag} alt="" />
+          </div>
+          <div className='card_content'>
+            <span className='card_title'>{nombre}</span>
+            <span className='card_subtitle'>{subtitle}</span>
+            <p className='card_description'>{descripcion}</p>
+            <div className='card_description'> 
+            <button className='card-button'>more info</button>  
+            </div>
+          </div>
+        </article >
+      </div >
+    </>
   )
 }
 
