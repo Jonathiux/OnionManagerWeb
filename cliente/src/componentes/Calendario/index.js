@@ -5,9 +5,9 @@ function Calendario(){
     return(
         <div className='container-calendar'>
             <div className='Mes-Titulo'>
-                <button className='mes-anterior'>Mes anterior</button>
+                <button className='mes-anterior'> <img src="/atras.png" alt="Flecha Atras" /></button>
                 <h1 className='title'>Marzo</h1>
-                <button className='mes-siguiente'>Mes siguiente</button>
+                <button className='mes-siguiente'> <img src="/proximo.png" alt="Flecha Siguiente" /></button>
             </div>
             <div className='contenedor-dias'>
                 <div className='nombre-dias'>
@@ -22,6 +22,8 @@ function Calendario(){
                 <div className='contenedor-componentes-dias'>
 
                 </div>
+                <h1>hola</h1>
+                <img src="proximo.png" alt="img" />
             </div>
         </div>
     )

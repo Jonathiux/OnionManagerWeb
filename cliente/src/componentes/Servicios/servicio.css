@@ -17,6 +17,10 @@
     background-color: var(--hospital-green);
 }
 
+.texto{
+    display: flex;
+}
+
 .info-servicio{
     display: flex;
     align-items: center;
@@ -24,5 +28,8 @@
 
 .info-servicio h3{
     color: var(--black);
-    padding: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
 }

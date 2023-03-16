@@ -1,9 +1,7 @@
 .button-info{
-    width: 5rem;
-    height: 2.5rem;
     color: var(--black);
     border: 1px solid var(--very-light-pink);
-    border-radius: 20%;
+    border-radius: 20px;
 }
 
 .button-info:hover{

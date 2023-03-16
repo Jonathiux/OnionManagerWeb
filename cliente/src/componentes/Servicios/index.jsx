@@ -11,9 +11,11 @@ function Servicio(){
                     <img src="" alt="Imagen del Servicio" />
                 </div>
                 <div className="info-servicio">
-                    <h3 className="titulo-servicio">Ensanchado de rines</h3>
-                    <h3 className="estado">Activo</h3>
-                    <h3 className="fecha-entrega">30/Marzo/2023</h3>
+                    <div className="texto">
+                        <h3 className="titulo-servicio">Ensanchado de rines</h3>
+                        <h3 className="estado">Activo</h3>
+                        <h3 className="fecha-entrega">30/Marzo/2023</h3>
+                    </div>
                     <ServicioBoton/>
                 </div>
             </div>
