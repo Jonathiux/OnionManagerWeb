@@ -6,7 +6,7 @@ function OffcanvasExample() {
     const expand = false
   return (
     <>
-        <Navbar key={expand} bg="light" expand={expand} className="">
+        <Navbar key={expand} bg="danger" expand={expand} className="">
           <Container fluid>
             <Navbar.Brand href="#">Onion Manager</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

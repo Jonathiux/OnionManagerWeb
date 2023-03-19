@@ -1,11 +1,12 @@
 import React from "react";
+import './home.css';
 
 function Home(){
     return(
-        <>
-            Esto es desde el Home
-        </>
-    )
+        <header className='header-home'>
+            <h1 className="title">OnionManager</h1>
+        </header>
+    );
 }
 
-export default Home
+export default Home;
