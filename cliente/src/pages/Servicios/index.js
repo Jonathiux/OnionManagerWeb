@@ -1,43 +1,58 @@
 import CardService from 'componentes/CardServices';
 import Forms from 'componentes/ServiceForms';
+import img from 'componentes/imgs/Cortecnc.jpg'
 import './index.css';
+import { useState } from 'react';
 
 export default function PaginaServicios() {
+  const[seleccion, setseleccion] = useState('Tipo de servicio')
+  const[Tipo, setTipo] = useState(false)
+  const selecciona = () => {
+    console.log()
+
+  }
+
   return (
     <>
     <div className='row'>
-    
-    <CardService 
-    nombre='aloja'
-    descripcion='He had three simple rules by which he lived. The first was to never eat blue food.'
-    descripcionL='He took a sip of the drink. He wasnt sure whether he liked it or not, but at this moment it didnt matter. She had made it especially for him so he would have forced it down even if he had absolutely hated it. Thats simply the way things worked. She made him a new-fangled drink each day and he took a sip of it and smiled, saying it was excellent'
-    subtitle='He took a sip of the drink.'
-    />
-   
-    <CardService 
-    nombre='hola'
-    descripcion='Weas'
-    subtitle='aloja'
-    img='/componentes/imgs/Cortecnc.jpg'
-    />
-
-    <CardService 
-    nombre='hola'
-    descripcion='Weas'
-    subtitle='aloja'
-    />
-    <CardService 
-    nombre='hola'
-    descripcion='Weas'
-    subtitle='aloja'
-    />
-    <CardService 
-    nombre='hola'
-    descripcion='Weas'
-    subtitle='aloja'
-    />
-     </div>
-     <Forms />
+      <h1 className='text'>Nuestros servicios</h1>
+    </div>
+        <div className='row'>
+          <div className='col' id='1' onClick={selecciona} > 
+            <CardService id='1'  
+              nombre='Corte cnc'
+              subtitle='Maquilado de rines de aluminio'
+              descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas, teniendo como opción variedad de diseños'
+              img={img}
+              
+            />
+          </div>
+          <div className='col'  id='2' onClick={selecciona}>
+            <CardService id='2'
+              nombre='hola'
+              descripcion='Weas'
+              subtitle='aloja'
+              img='/componentes/imgs/Cortecnc.jpg'
+            />
+          </div>
+          <div className='col' id='3' onClick={selecciona}>
+            <CardService id='3'
+              nombre='hola'
+              descripcion='Weas'
+              subtitle='aloja'
+            />
+          </div>
+          <div className='col' id='4' onClick={selecciona}>
+            <CardService id='4'
+              nombre='hola'
+              descripcion='Weas'
+              subtitle='aloja'
+            />
+          </div>
+        </div>
+        <div>
+          <Forms tipoServicio={seleccion}/>
+        </div>
     </>
   );
 }

@@ -4,7 +4,7 @@
     margin: 20px;
     padding: 1rem;
     font-size: 1rem;
-    width: 350px;
+    width: 400px;
     border-radius: 1rem;
     color: lightslategray;
     box-shadow: 0 0.4rem #dfd9d9;
@@ -31,3 +31,44 @@
   .input-wrapper2 input:focus {
     outline-color: lightslategrey;
   }
+
+  .select{
+    height: 60px;
+    border-radius: 10px;
+    background-color: #eee;
+    border: none;
+    margin: 20px;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 1rem;
+    color: lightslategray;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+  }
+
+  .container {
+    background-color: aliceblue;
+    box-shadow: 0 0.4rem #dfd9d9;
+    border: 10px;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100%;
+    width: 100%;
+    }
+
+    .button{
+    height: 60px;
+    border-radius: 10px;
+    background-color: #b2ec66;
+    border: none;
+    margin: 20px;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 150px;
+    border-radius: 1rem;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+    }

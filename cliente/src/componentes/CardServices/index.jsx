@@ -1,21 +1,16 @@
 import './index.css';
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 
 
 
-export default function CardService({ nombre, subtitle, img, descripcion, descripcionL }) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [select, setselected] = useState ('card2')
-  const selected = () => setselected ('card')
+export default function CardService({ id, nombre, subtitle, img, descripcion}) {
+  const [select, setselected] = useState (false)
+  const className = select ? "card" : "card2"
   return (
     <>
       <div className='content'>
-        <article className={select} onClick={selected}>
-          <div className='temporary_text'>{nombre}
+        <article  className={className} onClick={() => setselected(!select)}>
+          <div className='temporary_text'>
             <img className='imagen' src={img} alt="" />
           </div>
           <div className='card_content'>
@@ -23,26 +18,11 @@ export default function CardService({ nombre, subtitle, img, descripcion, descri
             <span className='card_subtitle'>{subtitle}</span>
             <p className='card_description'>{descripcion}</p>
             <div className='card_description'>
-              <Button className='card-button' variant="primary" onClick={handleShow}>
-                Más información
-              </Button>
+            <h1 hidden>{className}</h1>
             </div>
           </div>
         </article >
       </div >
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{nombre}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{descripcionL}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Entendido!
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
     </>
   )
 }

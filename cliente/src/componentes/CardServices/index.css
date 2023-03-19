@@ -1,8 +1,8 @@
 .card {
   position: relative;
-  width: 350px;
-  height: 300px;
-  color: #2e2d31;
+  width: 250px;
+  height: 250px;
+  color:#2e2d31;
   background: #131313;
   overflow: hidden;
   border-radius: 20px;
@@ -10,16 +10,17 @@
   border-width: 3px;
 }
 
+.row{
+  width: 100%;
+}
+
 .imagen {
   border-radius: 20px;
   height: 250px;
-  width: 335px;
+  width: 250px;
 }
 
 .temporary_text {
-  font-weight: bold;
-  font-size: 24px;
-  padding: 6px 6px;
   color: #f8f8f8;
 }
 
@@ -31,7 +32,6 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  /* edit the width to fit card */
   width: 100%;
   height: 80%;
   padding-left: 20px;
@@ -40,8 +40,7 @@
   padding-bottom: 100px;
   background: #f2f2f2;
   border-top-left-radius: 20px;
-  /* edit here to change the height of the content box */
-  transform: translateY(150px);
+  transform: translateY(130px);
   transition: transform .25s;
 }
 
@@ -83,52 +82,19 @@
   transition-delay: .25s;
 }
 
-.card-button {
-  transform: translate(-50%, 125%);
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  background-color: #008bf8;
-  color: #fff;
-  font-size: 14px;
-  padding: 8px;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  opacity: 0;
-  transition: 0.3s ease-out;
-}
-
-.card:hover .card-button {
-  transform: translate(-50%, 50%);
-  opacity: 1;
-}
-
-.card-button {
-  width: 50%;
-  border-radius: 10px;
-  border: none;
-  background-color: #008bf8;
-  color: #fff;
-  font-size: 16px;
-  position: relative;
-  left: 50%;
-  top: 5px;
-  opacity: 0;
-  transition: 0.3s ease-out;
-}
-
 .content {
   align-items: center;
-  width: 370px;
-  margin: 40px;
-  border: 20px;
+  border-radius: 20px;
+  width: 250px;
+  margin: 10px;
+  border: 5px;
+  box-shadow: 0 0.4rem #dfd9d9;
 }
 
 .card2 {
   position: relative;
-  width: 350px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   color: #2e2d31;
   background: #131313;
   overflow: hidden;
