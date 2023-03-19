@@ -13,7 +13,7 @@ export default function Forms({ tipoServicio }) {
         <>
         <div className='container'>
         <div className='row'>
-            <h2 className='col-6'>Solicitud de servicio</h2>
+            <h2  className='title'>Solicitud de servicio</h2>
         </div>
             <div className='row'>
                 <div className='col-5'>
