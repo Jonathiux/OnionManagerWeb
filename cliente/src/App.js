@@ -17,14 +17,12 @@ function App() {
         {/* <Route path='/login' element={<Login />} /> */}
 
         {/* Cliente */}
-        {/* <Route path='/' element={<HomeCliente />} /> */}
+        {/* <Route path='/' element={<Servicios  />} /> */}
         <Route path='/crear-servicio' element={<NewServicio />} />
-        {/* <Route path='/servicios-activos' element={<Servicios  />} /> */}
         {/* <Route path='/mi-cuenta' element={<MiCuenta />} /> */}
 
         {/* Admin */}
-        {/* <Route path='/home-admin' element={<HomeAdmin />} /> */}
-        {/* <Route path='/agenda' element={<Agenda />} /> */}
+        {/* <Route path='/home-admin' element={<Agenda />} /> */}
         <Route path='/servicios-admin' element={<ServiciosAdmin />} />
         <Route path='/inventario' element={<Inventario />} />
         <Route path='/finanzas' element={<Finanzas />} />

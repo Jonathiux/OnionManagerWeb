@@ -1,9 +1,9 @@
 import {Button, Container, Form, Nav, Navbar, Offcanvas} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function OffcanvasExample() {
 
-    const expand = false
+    const expand = 'lg'
   return (
     <>
         <Navbar key={expand} bg="light" expand={expand} className="" style={{minWidth:'300px'}}>
@@ -22,9 +22,14 @@ function OffcanvasExample() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Link className="nav-link" to={'/'}>Inicio</Link>
-                  <Link className="nav-link" to={'/inventario'}>Inventario</Link>
-                  <Link className="nav-link" to={'/finanzas'}>Finanzas</Link>
+                  <NavLink className="nav-link" to={'/'}>Inicio</NavLink>
+                  <NavLink className="nav-link" to={'/crear-servicio'}>Nuevo Servicio</NavLink>
+                  <NavLink className="nav-link" to={'/mi-cuenta'}>Mi cuenta</NavLink>
+
+                  <NavLink className="nav-link" to={'/home-admin'}>Agenda-admin</NavLink>
+                  <NavLink className="nav-link" to={'/servicios-admin'}>ServiciosAdmin</NavLink>
+                  <NavLink className="nav-link" to={'/inventario'}>Inventario</NavLink>
+                  <NavLink className="nav-link" to={'/finanzas'}>Finanzas</NavLink>
                 </Nav>
                 <Form className="d-flex">
                   <Form.Control
