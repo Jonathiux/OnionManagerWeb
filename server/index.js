@@ -1,8 +1,10 @@
 import express from "express"
-import { PORT } from "./config.js"
-import morgan from "morgan"
-import servicios from "./routes/servicios.js"
 import cors from "cors"
+import morgan from "morgan"
+
+import { PORT } from "./config.js"
+import servicios from "./routes/servicios.js"
+import materiales from "./routes/materiales.js"
 
 const app = express()
 
@@ -17,6 +19,8 @@ app.get('/ping', (_req, res) => {
 })
 
 app.use('/api/servicios', servicios)
+
+app.use('/api/materiales', materiales)
 
 app.use((_request, respons) => {
     respons.status(404).json({

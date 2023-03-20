@@ -1,5 +1,7 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
+import React from 'react'
+import { Table } from 'react-bootstrap'
+import tras from 'iconos/trash.png'
+import pencil from 'iconos/editar.png'
 
 function Headers({ headers = [] }) {
     return (
@@ -20,8 +22,8 @@ function Tabla({ headers, lista, editar, eliminar } = {}) {
         return (
             <>
                 {
-                    data.map(fila =>
-                        <FilaProduct key={fila.id} p={fila} />
+                    data.map((fila, k) =>
+                        <FilaProduct key={k} p={fila} />
                     )
                 }
             </>
@@ -30,22 +32,28 @@ function Tabla({ headers, lista, editar, eliminar } = {}) {
 
     function FilaProduct({ p }) {
 
-        const precio = parseInt(p.precio).toLocaleString('es-MX', {
-            style: 'currency',
-            currency: 'MXN'
-        })
+        // const precio = parseInt(p.precio).toLocaleString('es-MX', {
+        //     style: 'currency',
+        //     currency: 'MXN'
+        // })
 
         return (
-            <tr id={`fila${p.id}`} >
-                <td>{p.id}</td>
-                <td>{p.nombre}</td>
-                <td>{precio}</td>
-                <td>{p.stock}</td>
-                <td>{parseInt(p.status) === 1 ? "Visible" : "Oculto"}</td>
-                <td>{p.tipo}</td>
-                <td>
-                    <button id={p.id} onClick={eliminar} className='btn btn-danger  mx-2'><i id={p.id} className="bi bi-trash"></i></button>
-                    <button id={p.id} onClick={editar} className='btn btn-info mx-2'><i id={p.id} className="bi bi-pencil-square"></i></button>
+            <tr id={`fila${p.IDMaterial}`} >
+                <td>{p.IDMaterial}</td>
+                <td>{p.Nombre}</td>
+                <td>{p.Descripcion}</td>
+                <td>{p.Cantidad}</td>
+                {/* <td>{precio}</td> */}
+                {/* <td>{parseInt(p.status) === 1 ? "Visible" : "Oculto"}</td> */}
+                <td className='d-flex'>
+                    <div style={{cursor:'pointer'}} id={p.IDMAterial} onClick={eliminar} className='mx-2'>
+                        {/* <i id={p.id} className=""></i> */}
+                        <img alt='Eliminar' src={tras} style={{height:'30px'}} />
+                    </div>
+                    <div style={{cursor:'pointer'}} id={p.IDMaterial} onClick={editar} className='mx-2'>
+                        <img alt='Editar' src={pencil} style={{height:'30px'}} />
+                        {/* <i id={p.id} className="bi bi-pencil-square"></i> */}
+                    </div>
                 </td>
             </tr>
         )

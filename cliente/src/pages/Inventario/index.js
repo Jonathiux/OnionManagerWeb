@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import TablaPaginacion from 'componentes/TablaPaginacion'
 import './index.css'
+import Material from 'services/materiales'
 // import { Form, Button } from 'react-bootstrap'
 
 function Inventario(params) {
 
-    const headers = ["#", "Nombre", "Precio", "Stock", "Estado", "Tipo de Producto", "Acciones"]
+    const [data,setData] = useState([])
+
+    useEffect(()=>{
+        const m = new Material({})
+        m.getMateriales()
+            .then(m =>{
+                setData(m)
+            })
+    },[])
+
+    const headers = ['#', 'Nombre', 'Descripcion', 'Cantidad', 'Acciones']
 
     const editar = ()=>{
         alert('edicion')
@@ -21,10 +32,10 @@ function Inventario(params) {
                 <h1>Inventario</h1>
                 <div className='body-finanzas'>
                     <div className='col text-end'>
-                        <Link to='asd' className='btn btn-success'>+Nuevo Producto</Link>
+                        <Link to='asd' className='btn btn-success'>+Nuevo Material</Link>
                     </div>
                     <TablaPaginacion
-                        data={[{'nombre':'ssdfds','sdf':'sdfsdf','sdfs ':'sdfs'}]}
+                        data={data}
                         editar={editar}
                         eliminar={eliminar}
                         headers={headers}
