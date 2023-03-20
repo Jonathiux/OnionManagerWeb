@@ -136,6 +136,7 @@ function Finanzas(params) {
                 labels: ['Retificaciones', 'Cortes CNC', 'Ensanchados', 'Modificaciones', 'Barrenaciones'],
                 datasets: [
                     {
+                        type: 'bar',
                         label: 'Servicios',
                         backgroundColor: 'rgba(0,255,0,1)',
                         borderColor: 'black',
