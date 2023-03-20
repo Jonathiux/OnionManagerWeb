@@ -8,9 +8,10 @@ function Finanzas(params) {
 
     const [anios, setAnios] = useState([])
     const [meses, setMeses] = useState([])
+    const [servActuales, setServActuales] = useState([0, 0, 0, 0, 0])
+    const [intervals, setIntervals] = useState([0, 0, 0, 0, 0])
     const [services, setServices] = useState([])
     const [data, setData] = useState()
-    const [intervals, setIntervals] = useState([])
     const [render, setRender] = useState(false)
     const [TotalIngresos, setTotalIngresos] = useState(0)
     const [totalServicios, setTotalServicios] = useState(0)
@@ -34,14 +35,14 @@ function Finanzas(params) {
                 resp.forEach((s) => {
 
                     totalServicios++
-                    
+
                     totalIngresos += parseInt(s.PrecioTotal)
-                    
+
                     const anio = new Date(s.FechaEntrega).getFullYear()
                     if (!anios.includes(anio)) {
                         anios = [...anios, anio]
                     }
-                    
+
                 })
                 setTotalServicios(totalServicios)
                 setTotalIngresos(totalIngresos)
@@ -72,10 +73,12 @@ function Finanzas(params) {
     const handleChangMes = () => {
         handleRender()
         setIntervals([0, 0, 0, 0, 0])
+        const precioServicios = [0, 0, 0, 0, 0]
         services.forEach((s) => {
             const fecha = new Date(s.FechaEntrega)
             const mes = fecha.getMonth()
             const anio = fecha.getFullYear()
+
 
             if (anio === parseInt(refAnio.current.value) && mes === parseInt(refMes.current.value)) {
                 switch (parseInt(s.TipoServicio)) {
@@ -85,6 +88,7 @@ function Finanzas(params) {
                             newData[0]++
                             return newData
                         })
+                        precioServicios[0] += s.PrecioTotal
                         break
                     case 2:
                         setIntervals(intervals => {
@@ -92,6 +96,7 @@ function Finanzas(params) {
                             newData[1]++
                             return newData
                         })
+                        precioServicios[1] += s.PrecioTotal
                         break
                     case 3:
                         setIntervals(intervals => {
@@ -99,6 +104,7 @@ function Finanzas(params) {
                             newData[2]++
                             return newData
                         })
+                        precioServicios[2] += s.PrecioTotal
                         break
                     case 4:
                         setIntervals(intervals => {
@@ -106,6 +112,7 @@ function Finanzas(params) {
                             newData[3]++
                             return newData
                         })
+                        precioServicios[3] += s.PrecioTotal
                         break
                     case 5:
                         setIntervals(intervals => {
@@ -113,12 +120,14 @@ function Finanzas(params) {
                             newData[4]++
                             return newData
                         })
+                        precioServicios[4] += s.PrecioTotal
                         break
                     default:
                         break
                 }
             }
         })
+        setServActuales(precioServicios)
     }
 
     useEffect(() => {
@@ -135,23 +144,36 @@ function Finanzas(params) {
                 ]
             })
         } else if (parseInt(refTipo.current.value) === 1) {
-            setData({
-                labels: ['Retificaciones', 'Cortes CNC', 'Ensanchados', 'Modificaciones', 'Barrenaciones'],
-                datasets: [
-                    {
-                        label: 'Coste',
-                        backgroundColor: 'rgba(0,255,0,1)',
-                        borderColor: 'black',
-                        data: intervals.map(i => i * .70)
-                    },
-                    {
-                        label: 'Ganancia',
-                        backgroundColor: 'rgba(125,150,0,1)',
-                        borderColor: 'black',
-                        data: intervals.map(i => i * .30)
-                    }
-                ]
-            })
+            setData(
+                {
+                    labels: ['Retificaciones', 'Cortes CNC', 'Ensanchados', 'Modificaciones', 'Barrenaciones'],
+                    datasets: [
+                        {
+                            type: 'line',
+                            label: 'Total Ingreso',
+                            borderColor: 'black',
+                            borderWidth: 2,
+                            fill: false,
+                            data: servActuales
+                        },
+                        {
+                            type: 'bar',
+                            label: 'Coste',
+                            backgroundColor: 'rgba(0,255,0,1)',
+                            borderColor: 'black',
+                            data: servActuales.map(s => s * .70)
+                        },
+                        {
+                            type: 'bar',
+                            label: 'Ganancia',
+                            backgroundColor: 'rgba(125,150,0,1)',
+                            borderColor: 'black',
+                            data: servActuales.map(s => s * .30)
+                        }
+                    ]
+
+                }
+            )
         }
         // eslint-disable-next-line
     }, [render])

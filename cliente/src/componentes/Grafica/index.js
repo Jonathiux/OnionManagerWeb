@@ -2,6 +2,8 @@ import React from 'react';
 
 import {
   Chart as ChartJS,
+  LineElement,
+  PointElement,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -9,9 +11,11 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Chart } from 'react-chartjs-2';
 
 ChartJS.register(
+  PointElement,
+  LineElement,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -24,14 +28,16 @@ export function Grafica({ intervalos = {
   labels: ['Retificaciones', 'Cortes CNC', 'Ensanchados', 'Modificaciones', 'Barrenaciones'],
   datasets: [
     {
-      label: 'Servicios',
-      backgroundColor: 'rgba(0,255,0,1)',
+      type:'bar',
+      // label: 'Servicios',
+      // backgroundColor: 'rgba(0,255,0,1)',
       borderColor: 'black',
       data: [0]
     },
     {
-      label: 'Ganancia',
-      backgroundColor: 'rgba(125,150,0,1)',
+      type:'bar',
+      // label: 'Ganancia',
+      // backgroundColor: 'rgba(125,150,0,1)',
       borderColor: 'black',
       data: [0]
     }
@@ -51,5 +57,6 @@ export function Grafica({ intervalos = {
     },
   }
 
-  return <Bar options={options} data={intervalos} />;
+  return <Chart options={options} data={intervalos} />
+  // return <Bar options={options} data={intervalos} />
 }
