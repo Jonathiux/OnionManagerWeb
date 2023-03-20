@@ -1,5 +1,4 @@
 import './index.css'
-import AnyChart from 'anychart-react'
 import { Container } from 'react-bootstrap'
 
 function Finanzas(params) {
@@ -61,9 +60,6 @@ function Finanzas(params) {
                             </div>
                             <div className='row grafica-container'>
                                 <div className=''>
-                                    < AnyChart
-                                        {...complexSettings}
-                                    />
                                 </div>
                                 <div className=''>Grafica</div>
                             </div>

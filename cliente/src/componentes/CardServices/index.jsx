@@ -1,20 +1,30 @@
 import './index.css';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import React, { useState } from 'react';
 
-export default function getServicios(){
-  return(
-    <Card className='Card' style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button className='ButtonS'>Go somewhere</Button>
-      </Card.Body>
-    </Card>
+
+
+export default function CardService({ id, nombre, subtitle, img, descripcion}) {
+  const [select, setselected] = useState (false)
+  const className = select ? "card" : "card2"
+  return (
+    <>
+      <div className='content'>
+        <article  className={className} onClick={() => setselected(!select)}>
+          <div className='temporary_text'>
+            <img className='imagen' src={img} alt="" />
+          </div>
+          <div className='card_content'>
+            <span className='card_title'>{nombre}</span>
+            <span className='card_subtitle'>{subtitle}</span>
+            <p className='card_description'>{descripcion}</p>
+            <div className='card_description'>
+            <h1 hidden>{className}</h1>
+            </div>
+          </div>
+        </article >
+      </div >
+    </>
   )
 }
+
 

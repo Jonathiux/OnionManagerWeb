@@ -1,21 +1,64 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import CardService from 'componentes/CardServices';
+import Forms from 'componentes/ServiceForms';
+import Cortecnc from 'componentes/imgs/Cortecnc.jpg'
+import Rectificar from 'componentes/imgs/Rectificado.jpg'
+import Modificacion from 'componentes/imgs/modificacion2.jpg'
+import Ensanchar from 'componentes/imgs/Ensanchado.jpg'
 import './index.css';
+import { useState } from 'react';
 
-function BasicExample() {
+export default function PaginaServicios() {
+  const[seleccion, setseleccion] = useState('Tipo de servicio')
+  const[Tipo, setTipo] = useState(false)
+  const selecciona = () => {
+    console.log()
+
+  }
+
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button className='ButtonS'>Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <>
+    <div className='row'>
+      <h1 className='text'>Nuestros servicios</h1>
+    </div>
+        <div className='row'>
+          <div className='col' id='1' onClick={selecciona} > 
+            <CardService id='1'  
+              nombre='Corte cnc'
+              subtitle='Maquilado de rines de aluminio'
+              descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas, teniendo como opción variedad de diseños'
+              img={Cortecnc}
+              
+            />
+          </div>
+          <div className='col'  id='2' onClick={selecciona}>
+            <CardService id='2'
+              nombre='Rectificar'
+              descripcion='Se realiza la reparación de abolladuras, alineación y retoque de pintura.'
+              subtitle='Reparación general de los rines'
+              img={Rectificar}
+            />
+          </div>
+          <div className='col' id='3' onClick={selecciona}>
+            <CardService id='3'
+              nombre='Modificación'
+              descripcion='Se realiza la modificación de rines al gusto y especificaciónes del cliente.'
+              subtitle='Rines personalizados'
+              img={Modificacion}
+            />
+          </div>
+          <div className='col' id='4' onClick={selecciona}>
+            <CardService id='4'
+              nombre='Ensanchar'
+              descripcion='Se ensancha la cama del rin con anillos de solera de acero soldada'
+              subtitle='Ensanchado de rines de acero'
+              img={Ensanchar}
+            />
+          </div>
+        </div>
+        <div>
+          <Forms tipoServicio={seleccion}/>
+        </div>
+    </>
   );
 }
 
-export default BasicExample;
