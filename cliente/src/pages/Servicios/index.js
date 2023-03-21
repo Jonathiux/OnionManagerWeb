@@ -10,19 +10,21 @@ import { useState } from 'react';
 export default function PaginaServicios() {
   const[seleccion, setseleccion] = useState('Tipo de servicio')
   const[Tipo, setTipo] = useState(false)
-  const selecciona = () => {
-    console.log()
-
+  
+  const selecciona = (e) => {
+    setTipo(parseInt(e.target.id))
+    console.log(Tipo)
   }
 
   return (
     <>
+    <div className='chupapi'>
     <div className='row'>
       <h1 className='text'>Nuestros servicios</h1>
     </div>
         <div className='row'>
           <div className='col' id='1' onClick={selecciona} > 
-            <CardService id='1'  
+            <CardService  
               nombre='Corte cnc'
               subtitle='Maquilado de rines de aluminio'
               descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas, teniendo como opción variedad de diseños'
@@ -31,7 +33,7 @@ export default function PaginaServicios() {
             />
           </div>
           <div className='col'  id='2' onClick={selecciona}>
-            <CardService id='2'
+            <CardService
               nombre='Rectificar'
               descripcion='Se realiza la reparación de abolladuras, alineación y retoque de pintura.'
               subtitle='Reparación general de los rines'
@@ -39,7 +41,7 @@ export default function PaginaServicios() {
             />
           </div>
           <div className='col' id='3' onClick={selecciona}>
-            <CardService id='3'
+            <CardService
               nombre='Modificación'
               descripcion='Se realiza la modificación de rines al gusto y especificaciónes del cliente.'
               subtitle='Rines personalizados'
@@ -47,7 +49,7 @@ export default function PaginaServicios() {
             />
           </div>
           <div className='col' id='4' onClick={selecciona}>
-            <CardService id='4'
+            <CardService 
               nombre='Ensanchar'
               descripcion='Se ensancha la cama del rin con anillos de solera de acero soldada'
               subtitle='Ensanchado de rines de acero'
@@ -56,7 +58,8 @@ export default function PaginaServicios() {
           </div>
         </div>
         <div>
-          <Forms tipoServicio={seleccion}/>
+          <Forms tipoServicio={Tipo}/>
+        </div>
         </div>
     </>
   );

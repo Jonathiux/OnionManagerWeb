@@ -76,7 +76,7 @@ export default function Forms({ tipoServicio }) {
             </div>
             <div className='row'>
                 <div className='col-2'>
-                <button className='button'>Solicitar</button>
+                <button className='button' >Solicitar</button>
                 </div>
             </div>
             </div>

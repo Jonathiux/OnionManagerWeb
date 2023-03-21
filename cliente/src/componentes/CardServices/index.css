@@ -1,4 +1,4 @@
-.card {
+.chupapi .card {
   position: relative;
   width: 250px;
   height: 250px;
@@ -10,25 +10,25 @@
   border-width: 3px;
 }
 
-.row{
+.chupapi .row{
   width: 100%;
 }
 
-.imagen {
+.chupapi .imagen {
   border-radius: 20px;
   height: 250px;
   width: 250px;
 }
 
-.temporary_text {
+.chupapi .temporary_text {
   color: #f8f8f8;
 }
 
-.card_title {
+.chupapi .card_title {
   font-weight: bold;
 }
 
-.card_content {
+.chupapi .card_content {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -44,7 +44,7 @@
   transition: transform .25s;
 }
 
-.card_content::before {
+.chupapi .card_content::before {
   content: '';
   position: absolute;
   top: -47px;
@@ -56,33 +56,33 @@
   box-shadow: inset 48px 48px #f2f2f2;
 }
 
-.card_title {
+.chupapi .card_title {
   color: #131313;
   line-height: 15px;
 }
 
-.card_subtitle {
+.chupapi .card_subtitle {
   display: block;
   font-size: 12px;
   margin-bottom: 10px;
 }
 
-.card_description {
+.chupapi .card_description {
   font-size: 14px;
   opacity: 0;
   transition: opacity .5s;
 }
 
-.card:hover .card_content {
+.chupapi .card:hover .card_content {
   transform: translateY(0);
 }
 
-.card:hover .card_description {
+.chupapi .card:hover .card_description {
   opacity: 1;
   transition-delay: .25s;
 }
 
-.content {
+.chupapi .content {
   align-items: center;
   border-radius: 20px;
   width: 250px;
@@ -91,7 +91,7 @@
   box-shadow: 0 0.4rem #dfd9d9;
 }
 
-.card2 {
+.chupapi .card2 {
   position: relative;
   width: 250px;
   height: 250px;
@@ -103,16 +103,16 @@
   border-width: 3px;
 }
 
-.card2:hover .card_content {
+.chupapi .card2:hover .card_content {
   transform: translateY(0);
 }
 
-.card2:hover .card_description {
+.chupapi .card2:hover .card_description {
   opacity: 1;
   transition-delay: .25s;
 }
 
-.card2:hover .card-button {
+.chupapi .card2:hover .card-button {
   transform: translate(-50%, 50%);
   opacity: 1;
 }
