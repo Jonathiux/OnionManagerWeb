@@ -1,5 +1,4 @@
 import React from 'react';
-import './calendario.css';
 import ComponenteDia from './ComponenteDia';
 import ContenedorDias from './ContenedorDias';
 import TituloMes from './TituloMes';
@@ -11,7 +10,7 @@ const diasServiciosActivos = [
 function Calendario(){
     
     return(
-        <div>
+        <div className='calendario-container'>
             <TituloMes />
             <ContenedorDias>
                 <ComponenteDia />

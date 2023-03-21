@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState} from "react"
+import './tituloMes.css'
+import flechaAtras from './atras.png'
+import flechaAdelante from './proximo.png'
 
 const mes = [
     {valor: 1, mes: 'Enero', dias: 31},
@@ -16,15 +19,33 @@ const mes = [
 ];
 
 function TituloMes(){
+    const [contador, setContador] = useState(3);
+
+    const handleAumentar = () => {
+        setContador(contador+1);
+    }
+
+    const handleDisminuir = () => {
+        setContador(contador-1);
+    }
+
     return(
-        <div className="titulo">
-            <div className="info-mes">
-                <img src="" alt="" />
-                <h3></h3>
-                <img src="" alt="" />
-            </div>
-            <div>
-                
+        <div className="row">
+            <div className="titulo">
+                <div className="info-mes">
+                    <img src={flechaAtras} alt="Flecha anterior" onClick={handleDisminuir}/>
+                    <h3>{mes[contador].mes}</h3>
+                    <img src={flechaAdelante} alt="Flecha adelante" onClick={handleAumentar}/>
+                </div>
+                <div className="dias">
+                    <h3>L</h3>
+                    <h3>M</h3>
+                    <h3>M</h3>
+                    <h3>J</h3>
+                    <h3>V</h3>
+                    <h3>S</h3>
+                    <h3>D</h3>
+                </div>
             </div>
         </div>
     );
