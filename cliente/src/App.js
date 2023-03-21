@@ -7,6 +7,7 @@ import Finanzas from 'pages/Finanzas'
 // import HomeCliente from 'pages/Home'
 import Inventario from 'pages/Inventario'
 import NewServicio from 'pages/Servicios'
+import Login from 'pages/Login'
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Nav />
       <Routes>
 
-        {/* <Route path='/login' element={<Login />} /> */}
+        <Route path='/login' element={<Login />} />
 
         {/* Cliente */}
         {/* <Route path='/' element={<Servicios  />} /> */}
