@@ -3,6 +3,8 @@ import { Table } from 'react-bootstrap'
 import tras from 'iconos/trash.png'
 import pencil from 'iconos/editar.png'
 
+import './index.css'
+
 function Headers({ headers = [] }) {
     return (
         <>
@@ -45,8 +47,8 @@ function Tabla({ headers, lista, editar, eliminar } = {}) {
                 <td>{p.Cantidad}</td>
                 {/* <td>{precio}</td> */}
                 {/* <td>{parseInt(p.status) === 1 ? "Visible" : "Oculto"}</td> */}
-                <td className='d-flex'>
-                    <div style={{cursor:'pointer'}} id={p.IDMAterial} onClick={eliminar} className='mx-2'>
+                <td className='acciones'>
+                    <div style={{cursor:'pointer'}} id={p.IDMaterial} onClick={eliminar} className='mx-2'>
                         {/* <i id={p.id} className=""></i> */}
                         <img alt='Eliminar' src={tras} style={{height:'30px'}} />
                     </div>
@@ -62,7 +64,7 @@ function Tabla({ headers, lista, editar, eliminar } = {}) {
 
     return (
         <>
-            <Table striped bordered hover size="sm" >
+            <Table responsive striped bordered hover size="sm" >
                 <thead className='text-center'>
                     <tr>
                         <Headers headers={headers} />

@@ -2,9 +2,13 @@
     height: 80vh;
 } */
 
-.body-finanzas{
+.body-inventario{
     border-radius: 10px;
-    background-color: white;
+    background-color: rgb(254, 166 , 10,1);
     height: 100%;
     padding: 20px;
+}
+
+thead th{
+    background-color: rgba(0, 0, 0, 0.27) !important;
 }

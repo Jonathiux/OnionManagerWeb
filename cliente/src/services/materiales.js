@@ -46,6 +46,14 @@ class Material {
             .then((res) => res.json())
             .then(this.fromAjaxResponseToProducts)
     }
+
+    deleteMaterial(m = new Material({})){
+        return fetch(`${apiURL}/${m._id}`,{
+            method:'DELETE'
+        })
+            .then(resp=>resp.json())
+            .then(this.fromAjaxResponseToProducts)
+    }
 }
 
 export default Material
