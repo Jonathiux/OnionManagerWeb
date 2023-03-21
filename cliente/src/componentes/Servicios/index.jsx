@@ -1,25 +1,22 @@
 import React from "react";
-import ServicioBoton from "./servicio-botton";
+import ServicioItem from "./ServicioItem";
+import ServicioLista from "./ServicioLista";
 import './servicio.css';
 
 
+const servicios = [
+    { servicio: 'Ensanchado de rines', imagen: 'url', estado: true, fecha: '30/Marzo/2023', observaciones: 'El servicio se ha tardado debido a mantenimiento' },
+    { servicio: 'Modificar rines', imagen: 'url', estado: false, fecha: '2/Abril/2023', observaciones: 'Falta de especificar modificaciones' },
+    { servicio: 'Cambio de barrenación', imagen: 'url', estado: true, fecha: '3/Abril/2023', observaciones: 'La barrenación se está logrando exitosamente' },
+];
+
 function Servicio(){
     return(
-        <div className="menu-servicios">
-            <div className="servicio">
-                <div className="imagen">
-                    <img src="" alt="Imagen del Servicio" />
-                </div>
-                <div className="info-servicio">
-                    <div className="texto">
-                        <h3 className="titulo-servicio">Ensanchado de rines</h3>
-                        <h3 className="estado">Activo</h3>
-                        <h3 className="fecha-entrega">30/Marzo/2023</h3>
-                    </div>
-                    <ServicioBoton/>
-                </div>
-            </div>
-        </div>
+        <ServicioLista >
+            {servicios.map(service => (
+                <ServicioItem key={service.servicio} servicio={service.servicio} fecha={service.fecha} estado={service.estado} observaciones={service.observaciones}/>
+            ))}
+        </ServicioLista>
     );
 }
 
