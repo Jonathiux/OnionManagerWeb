@@ -1,4 +1,4 @@
-.input-wrapper input {
+.chupapi .input-wrapper input {
   background-color: #eee;
   border: none;
   margin: 20px;
@@ -11,11 +11,11 @@
   cursor: pointer;
 }
 
-.input-wrapper input:focus {
+.chupapi .input-wrapper input:focus {
   outline-color: lightslategrey;
 }
 
-.input-wrapper2 input {
+.chupapi .input-wrapper2 input {
   background-color: #eee;
   border: none;
   margin: 20px;
@@ -28,11 +28,11 @@
   cursor: pointer;
 }
 
-.input-wrapper2 input:focus {
+.chupapi .input-wrapper2 input:focus {
   outline-color: lightslategrey;
 }
 
-.select {
+.chupapi .select {
   height: 60px;
   border-radius: 10px;
   background-color: #eee;
@@ -47,7 +47,7 @@
   cursor: pointer;
 }
 
-.container {
+.chupapi .container {
   background-color: aliceblue;
   box-shadow: 0 0.4rem #dfd9d9;
   border: 10px;
@@ -59,7 +59,7 @@
   border-radius: 20px;
 }
 
-.button {
+.chupapi .button {
   height: 60px;
   border-radius: 10px;
   background-color: #b2ec66;
@@ -74,18 +74,18 @@
   cursor: pointer;
 }
 
-.title {
+.chupapi .title {
   margin: 10px;
   color: black;
   width: fit-content;
 }
 
-.col {
+.chupapi.col {
   width: 100%;
   margin: 10px;
 }
 
-.row {
+.chupapi .row {
   margin: 0%;
   width: 100%;
 }
