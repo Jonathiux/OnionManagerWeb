@@ -45,7 +45,7 @@ export default function Forms({ tipoServicio }) {
                             descripcion={descripcion} onChange={e => setDescripcion(e.target.descripcion)}></input>
                     </div>
                 </div>
-                <div className='col-3'>
+                <div className='col-2'>
                     <div className='input-wrapper'>
                         <select className='select'> 
                             <option defaultValue={'14"'} >Medida</option>
@@ -61,7 +61,7 @@ export default function Forms({ tipoServicio }) {
                         </select>
                     </div>
                 </div>
-                <div className='col-3'>
+                <div className='col-2'>
                     <div className='input-wrapper'>
                         <select className='select'> 
                             <option defaultValue={'Corte normal'}>Tipo de corte</option>
@@ -72,7 +72,12 @@ export default function Forms({ tipoServicio }) {
                         </select>
                     </div>
                 </div>
-
+                <div className='col-2'>
+                    <div className='input-wrapper2'>
+                        <input type="number" placeholder="Cantidad" name="Cantidad" className='input'
+                            cantidad={cantidad} onChange={e => setCantidad(e.target.cantidad)}></input>
+                    </div>
+                </div>
             </div>
             <div className='row'>
                 <div className='col-2'>
