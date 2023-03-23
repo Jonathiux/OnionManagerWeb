@@ -10,7 +10,7 @@ function OffcanvasExample() {
     
   return (
     <>
-        <Navbar key={expand} bg="rgb(0,0,0,.01)" expand={expand} className="" style={{minWidth:'300px'}}>
+        <Navbar key={expand} bg="light" expand={expand} className="" style={{minWidth:'300px'}}>
           <Container fluid>
             <img alt='Logo' src={logo} style={{height:'80px'}} />
             <Navbar.Brand href="#">Onion Manager</Navbar.Brand>

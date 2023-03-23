@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import './index.css'
-import Tabla from "componentes/Tabla";
+import Tabla from "pages/Inventario/Tabla";
 
 function Paginacion({ headers, data = [], editar, eliminar }) {
 

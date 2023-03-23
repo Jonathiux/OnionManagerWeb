@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
-import TablaPaginacion from 'componentes/TablaPaginacion'
+// import { Link } from 'react-router-dom'
+import TablaPaginacion from 'pages/Inventario/TablaPaginacion'
 import './index.css'
 import Material from 'services/materiales'
-import ModalConfirmacion from 'componentes/ModalConfirmacion'
+import ModalConfirmacion from 'pages/Inventario/ModalConfirmacion'
+import ModalMaterial from './ModalMaterial'
 
 function Inventario(params) {
 
@@ -11,21 +12,30 @@ function Inventario(params) {
     const [showModalConfirmacion, setShowModalConfirmacion] = useState(false)
     const [data, setData] = useState([])
     const [id, setId] = useState(null)
+    const [modalMaterial, setModalMaterial] = useState({ title: null, estado: false })
 
-    const m = new Material({})
+    const m = useMemo(() => new Material({}), [])
+    const headers = useMemo(() => ['#', 'Nombre', 'Descripcion', 'Existencias', 'Acciones'], [])
 
     useEffect(() => {
         m.getMateriales()
             .then(m => {
                 setData(m)
             })
-    }, [])
+    }, [m])
 
-    const headers = useMemo(() => ['#', 'Nombre', 'Descripcion', 'Existencias', 'Acciones'], [])
 
     const editar = useCallback(() => {
-        alert('edicion')
+        setModalMaterial({ estado: true, title: 'Editar Material' })
     }, [])
+
+    const handleCloseModalMaterial = () => {
+        setModalMaterial({ estado: false })
+    }
+
+    const newMaterial = () => {
+        setModalMaterial({ estado: true, title: 'Nuevo Material' })
+    }
 
     useEffect(() => {
         if (eliminarConfirm) {
@@ -36,17 +46,19 @@ function Inventario(params) {
                     setData(newData)
                 })
         }
-    }, [eliminarConfirm])
+        setEliminar(false)
+    }, [eliminarConfirm, data, m, id])
+
+    const handleCloseModalConfirmacion = useCallback(() => {
+        setShowModalConfirmacion(!showModalConfirmacion)
+    }, [showModalConfirmacion])
 
     const eliminar = useCallback((e) => {
         handleCloseModalConfirmacion()
         setId(parseInt(e.target.parentNode.id))
         setEliminar(false)
-    }, [])
+    }, [handleCloseModalConfirmacion])
 
-    const handleCloseModalConfirmacion = () => {
-        setShowModalConfirmacion(!showModalConfirmacion)
-    }
 
     return (
         <>
@@ -54,7 +66,7 @@ function Inventario(params) {
                 <h1>Inventario</h1>
                 <div className='body-inventario'>
                     <div className='col text-end'>
-                        <Link to='asd' className='btn btn-success'>+Nuevo Material</Link>
+                        <button className='btn btn-success' onClick={newMaterial}>+Nuevo Material</button>
                     </div>
                     <TablaPaginacion
                         data={data}
@@ -68,6 +80,11 @@ function Inventario(params) {
                         title={"Eliminar Producto"}
                         handleClose={handleCloseModalConfirmacion}
                         respuesta={setEliminar}
+                    />
+                    <ModalMaterial
+                        estado={modalMaterial.estado}
+                        title={modalMaterial.title}
+                        handleClose={handleCloseModalMaterial}
                     />
                 </div>
             </div>
