@@ -3,7 +3,7 @@ import './servicioLista.css';
 
 function ServicioLista(props){
     return(
-        <section className="lista">
+        <section className="lista"> 
             <ul>
                 {props.children};
             </ul>

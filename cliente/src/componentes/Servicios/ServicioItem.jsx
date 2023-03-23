@@ -1,18 +1,23 @@
 import React from "react";
 import './servicioItem.css';
+import Ensanchado from './Ensanchado.jpg';
 
 
 function ServicioItem(props){
+
+    let claseImg = {Ensanchado};
+
     return(
         <li className="servicio-info">
             <div className="img">
-                <img src="https://th.bing.com/th/id/R.a759cd120ca7a3d43c790c9fa439b921?rik=hmrmgPhP%2fdYBTA&pid=ImgRaw&r=0" alt="Imagen servicio" />
+                <img src={Ensanchado} alt="Imagen servicio" />
             </div>
             <div className="info">
-                <h3><strong>Nombre servicio:</strong> {props.servicio}</h3>
+                <h3><strong>{props.servicio}</strong></h3>
                 <details>
-                    <h3><strong>Fecha de terminado:</strong> {props.fecha}</h3>
-                    <h3><strong>Observaciones:</strong> {props.observaciones}</h3>
+                    <h5><strong>Folio: </strong>{props.folio}</h5>
+                    <h5><strong>Fecha de terminado:</strong> {props.fecha}</h5>
+                    <h5><strong>Observaciones:</strong> {props.observaciones}</h5>
                 </details>
             </div>
         </li>

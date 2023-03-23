@@ -1,8 +1,8 @@
 .servicio-info{
     display: flex;
-    justify-content: space-between;
+    justify-content:start;
     width: 100%;
-    height: 15rem;
+    height: 10rem;
     border: 1px solid var(--very-light-pink);
     margin-top: .8rem;
     margin-bottom: .8rem;
@@ -15,12 +15,17 @@
     border: 1px solid var(--black);
 }
 
+.servicio-info:hover details{
+    visibility: visible;
+}
+
 .img{
-    width: 24rem;
+    width: 18rem;
     height: 100%;
 }
 
 .img img{
+    width: 100%;
     padding: auto;
     height: 100%;
     border: 1px solid var(--very-light-pink);
@@ -30,15 +35,21 @@
 }
 
 .info{
-    margin-top: 2rem;
-    margin-left: 4rem;
-    margin-right: auto;
+    display:inline;
+}
+
+.info h3{
+    margin-top: .4rem;
+    margin-left: 2rem;
+    margin-right: 4rem;
 }
 
 details{
+    visibility: hidden;
+    margin-top: .6rem;
     font-size: 16px;
 }
 
-details h3{
+details h4{
     margin-left: 1.8rem;
 }
