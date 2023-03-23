@@ -3,27 +3,24 @@ import React, { useState } from 'react';
 
 
 
-export default function CardService({ nombre, subtitle, img, descripcion}) {
-  const [select, setselected] = useState (false)
+export default function CardService(props) {
+  const [select, setselected] = useState()
   const className = select ? "card" : "card2"
   return (
     <>
-    <div className='chupapi'>
-      <div className='content'>
-        <article  className={className} onClick={() => setselected(!select)}>
-          <div className='temporary_text'>
-            <img className='imagen' src={img} alt="" />
-          </div>
-          <div className='card_content'>
-            <span id='Titulo' className='card_title'>{nombre}</span>
-            <span className='card_subtitle'>{subtitle}</span>
-            <p className='card_description'>{descripcion}</p>
-            <div className='card_description'>
-            <h1 hidden>{className}</h1>
+      <div id={props.nombre} className='chupapi'  onClick={() =>setselected(!select)}>
+        <div id={props.nombre} className='content' >
+          <article id={props.nombre} className={className} >
+            <div id={props.nombre} className='temporary_text'>
+              <img precio={props.precio} id={props.nombre} className='imagen' src={props.img} alt="" />
             </div>
-          </div>
-        </article >
-      </div >
+            <div id={props.nombre}  className='card_content' >
+              <span id={props.nombre} className='card_title'>{props.nombre}</span>
+              <span id={props.nombre} className='card_subtitle'>{props.subtitle}</span>
+              <p id={props.nombre} className='card_description'>{props.descripcion}</p>
+            </div>
+          </article >
+        </div >
       </div>
     </>
   )

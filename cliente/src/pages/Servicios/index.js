@@ -8,31 +8,38 @@ import './index.css';
 import { useState } from 'react';
 
 export default function PaginaServicios() {
-  const[seleccion, setseleccion] = useState('Tipo de servicio')
-  const[Tipo, setTipo] = useState(false)
-  
-  const selecciona = (e) => {
-    setTipo(parseInt(e.target.id))
-    console.log(Tipo)
+  const [Tipo, setTipo] = useState('Tipo Servicio')
+  const [hide, sethide] = useState(true)
+  const [precio, setPrecio] = useState(0.0)
+
+  function handleClick (e){ 
+      setTipo(e.target.id)
+    if (e.target.id==='Corte cnc') {
+      sethide(false)
+    }else{
+      sethide(true)
+    }
+    console.log(e.target.id)
+
   }
 
   return (
     <>
-    <div className='chupapi'>
-    <div className='row'>
-      <h1 className='text'>Nuestros servicios</h1>
-    </div>
+      <div className='chupapi'>
         <div className='row'>
-          <div className='col' id='1' onClick={selecciona} > 
-            <CardService  
+          <h1 className='text'>Nuestros servicios</h1>
+        </div>
+        <div className='row'>
+          <div className='col' onClick={handleClick}>
+            <CardService
               nombre='Corte cnc'
               subtitle='Maquilado de rines de aluminio'
               descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas, teniendo como opción variedad de diseños'
               img={Cortecnc}
-              
+              precio='1200'
             />
           </div>
-          <div className='col'  id='2' onClick={selecciona}>
+          <div className='col' onClick={handleClick}>
             <CardService
               nombre='Rectificar'
               descripcion='Se realiza la reparación de abolladuras, alineación y retoque de pintura.'
@@ -40,7 +47,7 @@ export default function PaginaServicios() {
               img={Rectificar}
             />
           </div>
-          <div className='col' id='3' onClick={selecciona}>
+          <div className='col' onClick={handleClick}>
             <CardService
               nombre='Modificación'
               descripcion='Se realiza la modificación de rines al gusto y especificaciónes del cliente.'
@@ -48,8 +55,8 @@ export default function PaginaServicios() {
               img={Modificacion}
             />
           </div>
-          <div className='col' id='4' onClick={selecciona}>
-            <CardService 
+          <div className='col' onClick={handleClick}>
+            <CardService
               nombre='Ensanchar'
               descripcion='Se ensancha la cama del rin con anillos de solera de acero soldada'
               subtitle='Ensanchado de rines de acero'
@@ -58,12 +65,13 @@ export default function PaginaServicios() {
           </div>
         </div>
         <div>
-          <Forms tipoServicio={Tipo}/>
+          <Forms 
+          tipoServicio={Tipo} 
+          hide={hide}
+          precio={precio}
+          />
         </div>
-        </div>
-        <div>
-          
-        </div>
+      </div>
     </>
   );
 }

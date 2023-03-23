@@ -2,7 +2,7 @@
   position: relative;
   width: 250px;
   height: 250px;
-  color:#2e2d31;
+  color: #2e2d31;
   background: #131313;
   overflow: hidden;
   border-radius: 20px;
@@ -10,7 +10,7 @@
   border-width: 3px;
 }
 
-.chupapi .row{
+.chupapi .row {
   width: 100%;
 }
 
