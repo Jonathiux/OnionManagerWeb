@@ -10,6 +10,16 @@
   border-width: 3px;
 }
 
+.chupapi .buttons{
+    color: white;
+    background-color: rgb(64, 179, 224);
+    border-radius: 5px;
+    height: 40%;
+    width: 70%;
+    margin-left: 15%;
+    border: none;
+}
+
 .chupapi .row {
   width: 100%;
 }

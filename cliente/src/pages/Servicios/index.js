@@ -12,14 +12,13 @@ export default function PaginaServicios() {
   const [hide, sethide] = useState(true)
   const [precio, setPrecio] = useState(0.0)
 
-  function handleClick (e){ 
-      setTipo(e.target.id)
-    if (e.target.id==='Corte cnc') {
+  function handleClick(e) {
+    setTipo(e.target.id)
+    if (e.target.id === 'Corte cnc') {
       sethide(false)
-    }else{
+    } else {
       sethide(true)
     }
-    console.log(e.target.id)
 
   }
 
@@ -34,7 +33,7 @@ export default function PaginaServicios() {
             <CardService
               nombre='Corte cnc'
               subtitle='Maquilado de rines de aluminio'
-              descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas, teniendo como opción variedad de diseños'
+              descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas'
               img={Cortecnc}
               precio='1200'
             />
@@ -50,7 +49,7 @@ export default function PaginaServicios() {
           <div className='col' onClick={handleClick}>
             <CardService
               nombre='Modificación'
-              descripcion='Se realiza la modificación de rines al gusto y especificaciónes del cliente.'
+              descripcion='Se realiza la modificación de rines al gusto y especificaciones del cliente.'
               subtitle='Rines personalizados'
               img={Modificacion}
             />
@@ -65,10 +64,10 @@ export default function PaginaServicios() {
           </div>
         </div>
         <div>
-          <Forms 
-          tipoServicio={Tipo} 
-          hide={hide}
-          precio={precio}
+          <Forms
+            tipoServicio={Tipo}
+            hide={hide}
+            precio={precio}
           />
         </div>
       </div>
