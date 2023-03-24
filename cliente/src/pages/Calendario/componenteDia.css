@@ -1,0 +1,146 @@
+.container-dia-inicio-miercoles{
+    margin-top: 8px;
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+    grid-column-start: 3;
+}
+
+.container-dia-inicio-miercoles:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia-inicio-lunes{
+    margin-top: 8px;
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+    grid-column-start: 1;
+}
+
+.container-dia-inicio-lunes:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia-inicio-martes{
+    margin-top: 8px;
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+    grid-column-start: 2;
+}
+
+.container-dia-inicio-martes:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia-inicio-jueves{
+    margin-top: 8px;
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+    grid-column-start: 4;
+}
+
+.container-dia-inicio-jueves:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia-inicio-viernes{
+    margin-top: 8px;
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+    grid-column-start: 5;
+}
+
+.container-dia-inicio-viernes:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia-inicio-sabado{
+    margin-top: 8px;
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+    grid-column-start: 6;
+}
+
+.container-dia-inicio-sabado:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia-inicio-domingo{
+    margin-top: 8px;
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+    grid-column-start: 7;
+}
+
+.container-dia-inicio-domingo:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia{
+    margin-top: 8px;
+    
+    width: 10rem;
+    height: 8rem;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+}
+
+.container-dia-servicio{
+    margin-top: 8px;
+    
+    width: 10rem;
+    height: 8rem;
+    background-color: var(--hospital-green);
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+}
+
+.container-dia-servicio:hover{
+    border: 1px solid var(--black);
+}
+
+.container-dia-pendiente{
+    margin-top: 8px;
+    
+    width: 10rem;
+    height: 8rem;
+    background-color:lightsteelblue;
+    border: 1px solid var(--very-light-pink);
+    border-radius: 16px;
+}
+
+.container-dia-pendiente:hover{
+    border: 1px solid var(--black);   
+}
+
+.container-dia:hover{
+    border: 1px solid var(--black);
+}
+
+.numero-dia{
+    margin: 8px;
+    font-size: 1.2rem;
+}
+
+.servicio-dia{
+    margin-top: 4rem;
+    margin-left: 8px;
+    font-size: 1.2rem;
+}
+
+.servicio-dia-escondido{
+    display: none;
+}

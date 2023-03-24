@@ -8,6 +8,10 @@ import Finanzas from 'pages/Finanzas'
 import Inventario from 'pages/Inventario'
 import NewServicio from 'pages/Servicios'
 import Login from 'pages/Login'
+import Calendario from 'pages/Calendario'
+
+import './global.css'
+
 
 function App() {
   return (
@@ -23,7 +27,7 @@ function App() {
         {/* <Route path='/mi-cuenta' element={<MiCuenta />} /> */}
 
         {/* Admin */}
-        {/* <Route path='/home-admin' element={<Agenda />} /> */}
+        <Route path='/home-admin' element={<Calendario />} />
         <Route path='/servicios-admin' element={<ServiciosAdmin />} />
         <Route path='/inventario' element={<Inventario />} />
         <Route path='/finanzas' element={<Finanzas />} />
