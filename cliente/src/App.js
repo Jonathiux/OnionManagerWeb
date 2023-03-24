@@ -21,7 +21,7 @@ function App() {
         {/* Cliente */}
         {/* <Route path='/' element={<Servicios  />} /> */}
         <Route path='/crear-servicio' element={<NewServicio />} />
-        <Route path='/ ' element={<Registrarse />} />
+        <Route path='/mi-cuenta' element={<Registrarse />} />
 
         {/* Admin */}
         {/* <Route path='/home-admin' element={<Agenda />} /> */}
