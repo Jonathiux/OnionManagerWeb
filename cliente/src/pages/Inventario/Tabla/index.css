@@ -1,0 +1,5 @@
+.tabla-container .acciones{
+    display: flex!important;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

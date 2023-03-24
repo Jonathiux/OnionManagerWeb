@@ -1,6 +1,6 @@
 import './index.css'
 import { Form } from 'react-bootstrap'
-import { Grafica } from 'componentes/Grafica'
+import { Grafica } from 'pages/Finanzas/Grafica'
 import Servicio from 'services/servicios'
 import { useEffect, useRef, useState } from 'react'
 
@@ -138,7 +138,7 @@ function Finanzas(params) {
                     {
                         type: 'bar',
                         label: 'Servicios',
-                        backgroundColor: 'rgba(0,255,0,1)',
+                        backgroundColor: '#19f6f68f',
                         borderColor: 'black',
                         data: intervals
                     }
@@ -160,14 +160,14 @@ function Finanzas(params) {
                         {
                             type: 'bar',
                             label: 'Coste',
-                            backgroundColor: 'rgba(0,255,0,1)',
+                            backgroundColor: '#19f6f68f',
                             borderColor: 'black',
                             data: servActuales.map(s => s * .70)
                         },
                         {
                             type: 'bar',
                             label: 'Ganancia',
-                            backgroundColor: 'rgba(125,150,0,1)',
+                            backgroundColor: '#6e19f68c',
                             borderColor: 'black',
                             data: servActuales.map(s => s * .30)
                         }

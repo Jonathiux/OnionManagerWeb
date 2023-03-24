@@ -1,13 +1,18 @@
 import {Button, Container, Form, Nav, Navbar, Offcanvas} from 'react-bootstrap'
 import { NavLink } from 'react-router-dom';
 
+import './index.css'
+import logo from 'iconos/logo.png'
+
 function OffcanvasExample() {
 
-    const expand = 'lg'
+    const expand = false
+    
   return (
     <>
         <Navbar key={expand} bg="light" expand={expand} className="" style={{minWidth:'300px'}}>
           <Container fluid>
+            <img alt='Logo' src={logo} style={{height:'80px'}} />
             <Navbar.Brand href="#">Onion Manager</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -48,4 +53,4 @@ function OffcanvasExample() {
   );
 }
 
-export default OffcanvasExample;
+export default OffcanvasExample

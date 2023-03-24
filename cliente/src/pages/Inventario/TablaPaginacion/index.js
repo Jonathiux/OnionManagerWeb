@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import './index.css'
-import Tabla from "componentes/Tabla";
+import Tabla from "pages/Inventario/Tabla";
 
 function Paginacion({ headers, data = [], editar, eliminar }) {
 
@@ -14,7 +14,7 @@ function Paginacion({ headers, data = [], editar, eliminar }) {
     const [pagTotales, setPagTotales] = useState(10)
     //se renderiza cada vez que cambian los valores
     useEffect(() => {
-        const dataFiltro = data.filter(fila => fila["nombre"].toLowerCase().includes(valor.toLowerCase()))
+        const dataFiltro = data.filter(fila => fila["Nombre"].toLowerCase().includes(valor.toLowerCase()))
         const itemsTot = (dataFiltro.length - (dataFiltro.length % parseInt(filas))) / parseInt(filas) + (dataFiltro.length % parseInt(filas) === 0 ? 0 : 1)
         setPagTotales(itemsTot)
         setDatos(dataFiltro.slice(((pagActual * filas) - filas), (filas * pagActual)))
