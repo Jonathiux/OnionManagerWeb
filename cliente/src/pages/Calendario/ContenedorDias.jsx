@@ -17,7 +17,7 @@ const infoMes = [
     {nombre: 'Diciembre', dias: 31, comienza: 'viernes', diasConServicio: [], pendiente: []},
 ];
                                    const arreglo =  {
-                                        dia:[10, 3, 27],
+                                        dia:[10, 3, 27, 22],
                                         folio: [''],
                                     };
 const diasServiciosActivos = [

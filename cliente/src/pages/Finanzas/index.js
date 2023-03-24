@@ -25,7 +25,7 @@ function Finanzas(params) {
     const handleRender = () => setRender(!render)
 
     useEffect(() => {
-        const s = new Servicio({})
+        const s = new Servicio({Anticipo:345,Cantidad:34,})
         s.getServicios(s)
             .then(resp => {
                 setServices(resp)
