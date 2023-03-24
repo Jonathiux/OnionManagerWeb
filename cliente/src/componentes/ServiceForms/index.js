@@ -1,12 +1,43 @@
 import { useState } from 'react';
+import Servicio from 'services/servicios';
 import './index.css';
 
 export default function Forms({ tipoServicio, precio, hide }) {
     const [cantidad, setCantidad] = useState('');
     const [descripcion, setDescripcion] = useState('');
+    const [medida, setMedida] = useState('');
     const [precioT, setPrecioT] = useState('');
     const [anticipo, setAnticipo] = useState('');
     const [fechaS, setFechaS] = useState('');
+    const estado = 'Pendiente'
+
+    const fecha = new Date();
+    const hoy = fecha.toLocaleDateString('Mex');
+
+    const getprecioT = () => {
+        setPrecioT(cantidad*precio)
+    }
+
+    const handleSubmit = () => {
+        setFechaS(hoy.toLocaleString('MEX'))
+            const servicio = new Servicio({
+            Cantidad: cantidad,
+            TipoServicio: tipoServicio,
+            Descripcion: descripcion,
+            Estado: estado,
+            Anticipo: anticipo,
+            FechaSolicitado: fechaS,
+            PrecioTotal: precioT,
+            PrecioUnitario: precio
+            })
+            console.log(cantidad)
+            console.log(tipoServicio)
+            console.log(descripcion)
+            console.log(estado)
+            console.log(anticipo)
+            console.log(fechaS)
+            console.log(precioT)
+        }
 
     return (
         <>
@@ -23,13 +54,14 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
-                            <input type="number" disabled placeholder={precio} name="PrecioU" className='input'></input>
+                            <input type="number" disabled placeholder={precio} name="PrecioU" className='input'
+                            onChange={getprecioT}></input>
                         </div>
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" disabled placeholder="Precio Total" name="precioT" className='input'
-                                preciot={cantidad} onChange={() => setPrecioT({ cantidad } * { precio })}></input>
+                            ></input>
                         </div>
                     </div>
                 </div>
@@ -40,18 +72,18 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     <div className='col-5'>
                         <div className='input-wrapper'>
                             <input type="text" placeholder="Descripción" name="descripcion" className='input'
-                                descripcion={descripcion} onChange={e => setDescripcion(e.target.descripcion)}></input>
+                            onChange={(e) => setDescripcion(e.target.value)}></input>
                         </div>
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" placeholder="Cantidad" name="Cantidad" className='input'
-                                cantidad={cantidad} onChange={e => setCantidad(e.target.cantidad)}></input>
+                            onChange={(e) => setCantidad(e.target.value) && getprecioT}></input>
                         </div>
                     </div>
                     <div className='col-2'>
                         <div className='input-wrapper'>
-                            <select className='select'>
+                            <select className='select' onChange={(e) => setMedida(e.target.value)}>
                                 <option defaultValue={'14"'} >Medida</option>
                                 <option value='14"'>14"</option>
                                 <option value='15"'>15"</option>
@@ -78,8 +110,14 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     </div>
                 </div>
                 <div className='row'>
+                    <div className='col-3'>
+                        <div className='input-wrapper2'>
+                            <input type="number" placeholder="Anticipo" name="anticipo" className='input'
+                            onChange={(e) => setAnticipo(e.target.value)}></input>
+                        </div>
+                    </div>
                     <div className='col-2'>
-                        <button className='button' >Solicitar</button>
+                        <button className='button' onClick={handleSubmit}>Solicitar</button>
                     </div>
                 </div>
             </div>
