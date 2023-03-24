@@ -87,6 +87,12 @@ const Login = () => {
                         </button>
 
                     </div>
+                    <div className='sub-button-conteiner'>
+                        <button onClick={handleSubmit} className='sub-button2'>
+                            --REGISTRARSE--
+                        </button>
+
+                    </div>
 
                 </div>
 

@@ -9,6 +9,7 @@ import Inventario from 'pages/Inventario'
 import NewServicio from 'pages/Servicios'
 import Login from 'pages/Login'
 import Calendario from 'pages/Calendario'
+import Registrarse from 'pages/registrarse'
 
 import './global.css'
 
@@ -24,7 +25,7 @@ function App() {
         {/* Cliente */}
         {/* <Route path='/' element={<Servicios  />} /> */}
         <Route path='/crear-servicio' element={<NewServicio />} />
-        {/* <Route path='/mi-cuenta' element={<MiCuenta />} /> */}
+        <Route path='/mi-cuenta' element={<Registrarse />} />
 
         {/* Admin */}
         <Route path='/home-admin' element={<Calendario />} />
