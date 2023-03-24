@@ -8,6 +8,7 @@ import Finanzas from 'pages/Finanzas'
 import Inventario from 'pages/Inventario'
 import NewServicio from 'pages/Servicios'
 import Login from 'pages/Login'
+import Registrarse from 'pages/registrarse'
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         {/* Cliente */}
         {/* <Route path='/' element={<Servicios  />} /> */}
         <Route path='/crear-servicio' element={<NewServicio />} />
-        {/* <Route path='/mi-cuenta' element={<MiCuenta />} /> */}
+        <Route path='/ ' element={<Registrarse />} />
 
         {/* Admin */}
         {/* <Route path='/home-admin' element={<Agenda />} /> */}
