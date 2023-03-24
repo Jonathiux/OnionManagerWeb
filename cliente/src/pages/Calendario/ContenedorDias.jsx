@@ -16,11 +16,14 @@ const infoMes = [
     {nombre: 'Noviembre', dias: 30, comienza: 'miercoles', diasConServicio: [], pendiente: []},
     {nombre: 'Diciembre', dias: 31, comienza: 'viernes', diasConServicio: [], pendiente: []},
 ];
-
+                                   const arreglo =  {
+                                        dia:[10, 3, 27],
+                                        folio: [''],
+                                    };
 const diasServiciosActivos = [
     {mes: 'Enero', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
     {mes: 'Febrero', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Marzo', diaCompletado: {dia: [23, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [3, 18], folio: ['TLSQ', 'KIE4']}},
+    {mes: 'Marzo', diaCompletado: {dia: arreglo.dia, folio: ['H1LC', 'JIJIJ',  'JKAS2']}, diaPendiente: {dia: [3, 18], folio: ['TLSQ', 'KIE4']}},
     {mes: 'Abril', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
     {mes: 'Mayo', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
     {mes: 'Junio', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
