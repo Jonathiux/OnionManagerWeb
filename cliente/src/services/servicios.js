@@ -60,63 +60,80 @@ class Servicio {
     set precioTotal(newPrecioTotal) {
         this._PrecioTotal = newPrecioTotal
     }
-    get precioTotal(){
+    get precioTotal() {
         return this._PrecioTotal
     }
     // this._Anticipo = Anticipo
-    set anticipo(newAnticipo){
+    set anticipo(newAnticipo) {
         this._Anticipo = newAnticipo
     }
-    get anticipo(){
+    get anticipo() {
         return this._Anticipo
     }
     // this._Observaciones = Observaciones
-    set observaciones(newObservaciones){
+    set observaciones(newObservaciones) {
         this._Observaciones = newObservaciones
     }
-    get observaciones(){
+    get observaciones() {
         return this._Observaciones
     }
     // this._FechaEntrega = FechaEntrega
-    set fechaEntrega(newFechaEntrega){
+    set fechaEntrega(newFechaEntrega) {
         this._FechaEntrega = newFechaEntrega
     }
-    get fechaEntrega(){
+    get fechaEntrega() {
         return this._FechaEntrega
     }
     // this._FechaSolicitado = FechaSolicitado
-    set fechaSolicitado(newfechaSolicitado){
+    set fechaSolicitado(newfechaSolicitado) {
         this._FechaSolicitado = newfechaSolicitado
     }
-    get fechaSolicitado(){
+    get fechaSolicitado() {
         return this._FechaSolicitado
     }
     // this._FechaInicio = FechaInicio
-    set fechaInicio(newfechaInicio){
+    set fechaInicio(newfechaInicio) {
         this._FechaInicio = newfechaInicio
     }
-    get fechaInicio(){
+    get fechaInicio() {
         return this._FechaInicio
     }
     // this._Estado = Estado
-    set estado(newEstado){
+    set estado(newEstado) {
         this._Estado = newEstado
     }
-    get estado(){
+    get estado() {
         return this._Estado
     }
 
     //----------------------------------------------------------------
     //----------Todos los servicios para los repoprtes------------------
     //----------------------------------------------------------------
-    getServicios(p = new Servicio({})) {
-
+    getServicios(s = new Servicio({})) {
+        
         return fetch(`${apiURL}`, {
             method: 'GET'
         })
             .then((res) => res.json())
-            .then(this.fromAjaxResponseToProducts)
+            .then(res => { return res })
     }
+
+    //----------------------------------------------------------------
+    //----------Crea un servicio------------------
+    //----------------------------------------------------------------
+    postServicios(s = new Servicio({})) {
+
+        return fetch(`${apiURL}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(s)
+        })
+            .then((res) => res.json())
+            .then(res => { return res })
+    }
+
 }
 
 export default Servicio

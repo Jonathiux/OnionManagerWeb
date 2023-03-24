@@ -3,10 +3,18 @@ import { NavLink } from 'react-router-dom';
 
 import './index.css'
 import logo from 'iconos/logo.png'
+import Servicio from 'services/servicios';
 
 function OffcanvasExample() {
 
     const expand = false
+
+    const handleClick = ()=>{
+      const s = new Servicio({Anticipo:2323,Cantidad:2,Descripcion:'asddsa', Estado:'Finalizado'})
+      s.postServicios(s)
+        .then(resp=>{
+        })
+    }
     
   return (
     <>
@@ -43,7 +51,7 @@ function OffcanvasExample() {
                     className="me-2"
                     aria-label="Search"
                   />
-                  <Button variant="outline-success">Search</Button>
+                  <Button variant="outline-success" onClick={handleClick}>Search</Button>
                 </Form>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
