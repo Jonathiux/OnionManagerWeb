@@ -1,12 +1,128 @@
-.ButtonS{
-    background-color: brown;
-    position: static;
-    margin-left: 50px;
-    margin-left: 50px;
-
+.chupapi .card {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  color: #2e2d31;
+  background: #131313;
+  overflow: hidden;
+  border-radius: 20px;
+  border-color: greenyellow;
+  border-width: 3px;
 }
 
-.Selected{
-    border-color: chartreuse;
-    
+.chupapi .buttons{
+    color: white;
+    background-color: rgb(64, 179, 224);
+    border-radius: 5px;
+    height: 40%;
+    width: 70%;
+    margin-left: 15%;
+    border: none;
+}
+
+.chupapi .row {
+  width: 100%;
+}
+
+.chupapi .imagen {
+  border-radius: 20px;
+  height: 250px;
+  width: 250px;
+}
+
+.chupapi .temporary_text {
+  color: #f8f8f8;
+}
+
+.chupapi .card_title {
+  font-weight: bold;
+}
+
+.chupapi .card_content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  background: #f2f2f2;
+  border-top-left-radius: 20px;
+  transform: translateY(130px);
+  transition: transform .25s;
+}
+
+.chupapi .card_content::before {
+  content: '';
+  position: absolute;
+  top: -47px;
+  right: -45px;
+  width: 100px;
+  height: 100px;
+  transform: rotate(-175deg);
+  border-radius: 50%;
+  box-shadow: inset 48px 48px #f2f2f2;
+}
+
+.chupapi .card_title {
+  color: #131313;
+  line-height: 15px;
+}
+
+.chupapi .card_subtitle {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.chupapi .card_description {
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.chupapi .card:hover .card_content {
+  transform: translateY(0);
+}
+
+.chupapi .card:hover .card_description {
+  opacity: 1;
+  transition-delay: .25s;
+}
+
+.chupapi .content {
+  align-items: center;
+  border-radius: 20px;
+  width: 250px;
+  margin: 10px;
+  border: 5px;
+  box-shadow: 0 0.4rem #dfd9d9;
+}
+
+.chupapi .card2 {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  color: #2e2d31;
+  background: #131313;
+  overflow: hidden;
+  border-radius: 20px;
+  border-color: greenyellow;
+  border-width: 3px;
+}
+
+.chupapi .card2:hover .card_content {
+  transform: translateY(0);
+}
+
+.chupapi .card2:hover .card_description {
+  opacity: 1;
+  transition-delay: .25s;
+}
+
+.chupapi .card2:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
 }

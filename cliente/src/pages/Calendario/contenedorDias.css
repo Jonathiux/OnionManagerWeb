@@ -1,0 +1,10 @@
+.calendario-container .container{
+    width: 100%;
+    height: 53rem;
+    display: grid;
+    margin-top: 1.5rem;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+
+

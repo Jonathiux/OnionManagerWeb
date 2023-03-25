@@ -1,0 +1,67 @@
+.logo-conteiner {
+    width: 100%;
+    /* height:400px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:rgb(0, 0, 0)
+    
+}
+.logo-content {
+    background-color: rgb(255, 255, 255);
+    margin-left: 80px;
+    justify-content:center ;
+    font-size: 20px;
+    
+    
+    
+}
+
+.label-error {
+    font-size: 12px;
+    color: rgb(236, 47, 47);
+    margin-left: 9px;
+    
+}
+
+.sub-button-conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+}
+.sub-button {
+    width:70%;
+    height: 50px;
+    border-radius: 40px;
+    border:none;
+    background: rebeccapurple;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: bold;
+}
+.sub-button2 {
+    width:70%;
+    height: 50px;
+    border-radius: 40px;
+    border:none;
+    background: rebeccapurple;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: bold;
+}
+.fondo-login {
+    background-image: url('./components/img/fondoo.png');
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    height: 800px;
+}
+
+.spinner-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
