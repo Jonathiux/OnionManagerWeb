@@ -76,7 +76,7 @@ function Inventario(params) {
                     />
                     <ModalConfirmacion
                         show={showModalConfirmacion}
-                        body={"¿Esta seguro que desea elimiar el producto?"}
+                        body={"¿Esta seguro que desea eliminar el producto?"}
                         title={"Eliminar Producto"}
                         handleClose={handleCloseModalConfirmacion}
                         respuesta={setEliminar}

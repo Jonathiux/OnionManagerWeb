@@ -1,11 +1,11 @@
 import express from "express"
-import * as productoServices from '../services/servicios.js'
+import * as services from '../services/servicios.js'
 
 const router = express.Router()
 
 router.get('/', async (_req, res) => {
     try {
-        const results = await productoServices.getAll()
+        const results = await services.getAll()
         res.send(results)
     } catch (error) {
         console.error(error)
@@ -15,7 +15,7 @@ router.get('/', async (_req, res) => {
 
 router.post('/',async(_req,res) => {
     try {
-        const results = await productoServices.crearServicio(_req.body)
+        const results = await services.crearServicio(_req.body)
         if (results > 0) {
             console.log("Se ha insertado una fila en la tabla")
             res.status(201).send('Se ha insertado una fila en la tabla')

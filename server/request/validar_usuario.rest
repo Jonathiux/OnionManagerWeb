@@ -1,0 +1,17 @@
+POST http://localhost:4000/api/usuarios/login
+Content-Type: application/json
+
+{
+    "username":"root",
+    "password":"kali"
+}
+
+###
+
+POST http://localhost:4000/api/usuarios/login
+Content-Type: application/json
+
+{
+    "username":"root",
+    "password":"rootkali"
+}

@@ -1,6 +1,6 @@
 .logo-conteiner {
     width: 100%;
-    height:400px;
+    /* height:400px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,11 +57,11 @@
     background-repeat: no-repeat;
     background-position: 50% 100%;
     height: 800px;
+}
 
+.spinner-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-   
-   
-    
-    
-    
 }

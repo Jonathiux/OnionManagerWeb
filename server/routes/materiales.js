@@ -1,11 +1,11 @@
 import express from "express"
-import * as productoMateriales from '../services/materiales.js'
+import * as materiales from '../services/materiales.js'
 
 const router = express.Router()
 
 router.get('/', async (_req, res) => {
     try {
-        const results = await productoMateriales.getAll()
+        const results = await materiales.getAll()
         res.send(results)
     } catch (error) {
         console.error(error)
@@ -15,7 +15,7 @@ router.get('/', async (_req, res) => {
 
 router.delete('/:id', async (_req, res) => {
     try {
-        const results = await productoMateriales.deleteMaterial({id: _req.params.id})
+        const results = await materiales.deleteMaterial({id: _req.params.id})
         res.send(results)
     } catch (error) {
         console.error(error)
