@@ -14,13 +14,26 @@ export default function PaginaServicios() {
 
   function handleClick(e) {
     setTipo(e.target.id)
-    if (e.target.id === 'Corte cnc') {
-      sethide(false)
-    } else {
-      sethide(true)
+    switch(e.target.id){
+      case 'Corte cnc':
+        setPrecio(1500.0)
+        sethide(false)
+        break
+      case 'Rectificar':
+        setPrecio(700.0)
+        sethide(true)
+        break
+      case 'Modificación':
+        setPrecio(1000.0)
+        sethide(true)
+        break
+      case 'Ensanchar':
+        setPrecio(600.0)
+        sethide(true)
+        break
+
     }
-    setPrecio(e.target.precio)
-    console.log(e.target.precio)
+    console.log(precio)
   }
 
   return (
@@ -36,7 +49,6 @@ export default function PaginaServicios() {
               subtitle='Maquilado de rines de aluminio'
               descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas'
               img={Cortecnc}
-              precio={'1200'}
             />
           </div>
           <div className='col' onClick={handleClick}>

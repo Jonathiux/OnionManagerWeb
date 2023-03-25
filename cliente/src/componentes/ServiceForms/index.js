@@ -8,6 +8,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
     const [descripcionu, setDescripcionU] = useState('');
     const [medida, setMedida] = useState('');
     const [corte, setCorte] = useState('');
+    const [precioU, setPrecioU] = useState('');
     const [precioT, setPrecioT] = useState('');
     const [anticipo, setAnticipo] = useState('');
     const [fechaS, setFechaS] = useState('');
@@ -17,7 +18,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
     const hoy = fecha.toLocaleDateString('Mex');
 
     const getprecioT = () => {
-        setPrecioT(cantidad * precio)
+        setPrecioT(precio+cantidad)
     }
 
     const handleSubmit = () => {
@@ -63,13 +64,13 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
-                            <input type="number" disabled placeholder={precio} name="PrecioU" className='input'
-                                onChange={getprecioT}></input>
+                            <input type="number" disabled placeholder={precio} onChange={getprecioT} name="PrecioU" className='input'
+                               ></input>
                         </div>
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
-                            <input type="number" disabled placeholder="Precio Total" name="precioT" className='input'
+                            <input type="number" disabled placeholder={precioT} name="precioT" className='input'
                             ></input>
                         </div>
                     </div>
@@ -126,7 +127,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
                         </div>
                     </div>
                     <div className='col-2'>
-                        <button className='button' onClick={handleSubmit}>Solicitar</button>
+                        <button className='button' precio={precioU} onClick={handleSubmit}>Solicitar</button>
                     </div>
                 </div>
             </div>

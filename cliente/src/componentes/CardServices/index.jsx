@@ -31,7 +31,7 @@ export default function CardService(props) {
               <span className='card_title'>{props.nombre}</span>
               <span className='card_subtitle'>{props.subtitle}</span>
               <p className='card_description'>{props.descripcion}</p>
-              <button className='buttons' id={props.nombre} precio={props.precio} onClick={handleclick}>Seleccionar</button>
+              <button className='buttons' id={props.nombre} onClick={handleclick}>Seleccionar</button>
             </div>
           </article >
         </div >
