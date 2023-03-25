@@ -13,6 +13,9 @@ const Registrarse = () => {
     const [registro, setRegistro] = useState('');
     const [password, setPasswordRES] = useState('');
     const [passwordError, setPasswordErrorRES] = useState('')
+    const [name, setName] = useState('');
+    const [lastname, setlastname] = useState('');
+    const [num, setNum] = useState('');
     
 
 
@@ -22,6 +25,10 @@ const Registrarse = () => {
     function handleChange(name, value) {
         if (name === 'USUARIO') {
             setRegistro(value)
+            setName(value)
+            setlastname(value)
+            setNum(value)
+            
         
         } else {
             if (value.length < 5) {
@@ -36,7 +43,7 @@ const Registrarse = () => {
         }
     };
     function handleSubmit() {
-        let account = { registro, password }
+        let account = { registro, password ,name,lastname,num }
         if (account) {
             console.log('account:', account);
         }
@@ -49,92 +56,85 @@ const Registrarse = () => {
                 <div className='registro-content'>
 
 
-                    <Title text='¡REGISTRARSE!' />
-                    <Label text='USUARIO' />
+                    <Label text='Nombre de usuario' />
                     <Input 
                         attributoo={{
                             id: 'usuario',
                             name: 'usuario',
                             type: 'text',
-                            placeholder: 'Ingrese usuario'
+                            placeholder: 'Ingrese Nombre de usuario'
 
                         }}
 
                         handleChange={handleChange}
                     />
-                    <Label text='CONTRASEÑA' />
+                    <Label text='Contraseña' />
                     <Input gi
                         attributoo={{
                             id: 'contraseña',
                             name: 'contraseña',
                             type: 'password',
-                            placeholder: 'Ingrese contraseña'
+                            placeholder: 'Ingrese Contraseña'
 
                         }}
 
                         handleChange={handleChange}
-                        param={setPasswordErrorRES}
+                        
                     />
 
 
 
-                    <Label text='NOMBRE' />
+                    <Label text='Nombre' />
                     <Input gi
                         attributoo={{
-                            id: 'NOMBRE',
-                            name: 'NOMBRE',
+                            id: 'nombre',
+                            name: 'nombre',
                             type: 'name',
-                            placeholder: 'Ingrese contraseña'
+                            placeholder: 'Ingrese Nombre'
 
                         }}
 
                         handleChange={handleChange}
-                        param={setPasswordErrorRES}
+                        
                     />
 
 
 
-                    <Label text='APELLIDO' />
+                    <Label text='Apellido' />
                     <Input gi
                         attributoo={{
-                            id: 'APELLIDO',
-                            name: 'APELLIDO',
+                            id: 'apellido',
+                            name: 'apellido',
                             type: 'last name',
-                            placeholder: 'Ingrese apellido'
+                            placeholder: 'Ingrese Apellido'
 
                         }}
 
                         handleChange={handleChange}
-                        param={setPasswordErrorRES}
+                        
                     /> 
 
 
 
 
-                    <Label text='NUMERO' />
+                    <Label text='Numero' />
                     <Input gi
                         attributoo={{
-                            id: 'NUMERO',
-                            name: 'NUMERO',
+                            id: 'Numero',
+                            name: 'numero',
                             type: 'num',
-                            placeholder: 'Ingrese numero'
+                            placeholder: 'Ingrese Numero'
 
                         }}
 
                         handleChange={handleChange}
-                        param={setPasswordErrorRES}
+                        
                     />
 
-                    {passwordError &&
-
-                        <label className='label-registro-error'>
-                            contraseña invalida o incompleta
-                        </label>
-
-                    }
+                   
             
                     <div className='button-registrar'>
-                        <button onClick={handleSubmit} className='sub-button2'>
+                        <button onClick={handleSubmit} className='sub-button22'>
                             --REGISTRAR--
                         </button>
 
