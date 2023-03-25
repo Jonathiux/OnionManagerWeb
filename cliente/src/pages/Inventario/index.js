@@ -25,7 +25,8 @@ function Inventario(params) {
     }, [m])
 
 
-    const editar = useCallback(() => {
+    const editar = useCallback((e) => {
+        setId(parseInt(e.target.parentNode.id))
         setModalMaterial({ estado: true, title: 'Editar Material' })
     }, [])
 
@@ -85,6 +86,8 @@ function Inventario(params) {
                         estado={modalMaterial.estado}
                         title={modalMaterial.title}
                         handleClose={handleCloseModalMaterial}
+                        data={setData}
+                        id={id}
                     />
                 </div>
             </div>
