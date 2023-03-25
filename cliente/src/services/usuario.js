@@ -74,7 +74,10 @@ class Usuario {
 
         return fetch(apiURL, {
             method: 'POST',
-            body: JSON.stringify({u})
+            body: JSON.stringify(u),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
             .then(resp => resp.json())
             .then(resp => { return resp })

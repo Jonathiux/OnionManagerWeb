@@ -13,6 +13,16 @@ router.get('/', async (_req, res) => {
     }
 })
 
+router.get('/:idUsuario', async (_req, res) => {
+    try {
+        const results = await services.getservicesCliente({idUsuario:_req.params.idUsuario})
+        res.send(results)
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Ha ocurrido un error en el servidor')
+    }
+})
+
 router.post('/',async(_req,res) => {
     try {
         const results = await services.crearServicio(_req.body)

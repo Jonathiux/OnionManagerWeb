@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import useUser from 'hooks/useUser'
 
@@ -21,6 +21,7 @@ const Login = () => {
 
 
     function handleChange(name, value) {
+        console.log({name, value})
         if (name === 'usuario') {
             setUser(value)
             //variable para almacenar
@@ -40,13 +41,13 @@ const Login = () => {
 
     useEffect(() => {
         if (isLogged) {
-            if(user.tipo === 1){
+            if (user.tipo === 1) {
                 navigate('/home-admin')
-            }else{
+            } else {
                 navigate('/')
             }
         }
-    }, [isLogged, navigate,user])
+    }, [isLogged, navigate, user])
 
     return (
         <div className='fondo-login'>
@@ -85,9 +86,7 @@ const Login = () => {
                         </button>
                     </div>
                     <div className='sub-button-conteiner'>
-                        <button onClick={handleSubmit} disabled={loading} className='sub-button2'>
-                            --REGISTRARSE--
-                        </button>
+                        <button className='sub-button2'><NavLink className="nav-link" to={'/registro'}>--REGISTRARSE--</NavLink></button>
                     </div>
                     {
                         loading &&

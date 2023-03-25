@@ -11,6 +11,7 @@ import Login from 'pages/Login'
 import Calendario from 'pages/Calendario'
 import Registrarse from 'pages/registrarse'
 import ErrorPage from 'pages/ErrorPage'
+import MiCuenta from 'pages/MiCuenta'
 
 import useUser from 'hooks/useUser'
 
@@ -24,17 +25,19 @@ function App() {
 
   return (
     <>
-    {
-      (href.toLowerCase() !== "/login".toLowerCase() &&
-      href.toLowerCase() !== "/404".toLowerCase()) &&
-      <Nav />
-    }
+      {
+        (href.toLowerCase() !== "/login".toLowerCase() &&
+          href.toLowerCase() !== "/404".toLowerCase() &&
+          href.toLowerCase() !== "/registro".toLowerCase()) &&
+        <Nav />
+      }
       <Routes>
 
         <Route path='/login' element={<Login />} />
         {/* <Route path="/:rest/*" element={<Navigate to={'/404'}  state={{ruta:'login'}} />} /> */}
-        <Route path="/*" element={<Navigate to={'/404'} state={{ruta:'login'}} />} />
+        <Route path="/*" element={<Navigate to={'/404'} state={{ ruta: 'login' }} />} />
         <Route path="/404" element={<ErrorPage />} />
+        <Route path='/registro' element={<Registrarse />} />
 
         {
           isLogged &&
@@ -57,7 +60,7 @@ function App() {
                 <Route path='/finanzas' element={<Finanzas />} />
               </>
             }
-            <Route path='/mi-cuenta' element={<Registrarse />} /> 
+            <Route path='/mi-cuenta' element={<MiCuenta />} />
           </>
         }
 
