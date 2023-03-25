@@ -1,0 +1,8 @@
+POST http://localhost:4000/api/materiales/
+Content-Type: application/json
+
+{
+  "Nombre":"material",
+  "Descripcion":"asdsadffsddsaad",
+  "Cantidad":4
+}

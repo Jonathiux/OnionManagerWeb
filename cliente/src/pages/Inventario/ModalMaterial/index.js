@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Button, Modal, Form,Row, Col, InputGroup} from 'react-bootstrap'
+import { Button, Modal, Form, Row, Col, FloatingLabel } from 'react-bootstrap'
 
 function ModalMaterial({ title, estado, handleClose }) {
 
@@ -15,11 +15,16 @@ function ModalMaterial({ title, estado, handleClose }) {
     setValidated(true);
   }
 
+  const exit = ()=>{
+    handleClose()
+    setValidated(false)
+  }
+
   return (
     <>
       <Modal
         show={estado}
-        onHide={handleClose}
+        onHide={exit}
         backdrop="static"
         keyboard={false}
       >
@@ -27,83 +32,49 @@ function ModalMaterial({ title, estado, handleClose }) {
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form noValidate validated={validated} /* onSubmit={handleSubmit} */>
             <Row className="mb-3">
-              <Form.Group as={Col} md="4" controlId="validationCustom01">
-                <Form.Label>First name</Form.Label>
+              <Form.Group as={Col} controlId="validationCustom01">
+                <Form.Label>Nombre</Form.Label>
                 <Form.Control
-                  required
                   type="text"
-                  placeholder="First name"
-                  defaultValue="Mark"
+                  placeholder="Nombre de Material"
+                  required
                 />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback>Muy bien!</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustom02">
-                <Form.Label>Last name</Form.Label>
+              <Form.Group as={Col} controlId="validationCustomUsername">
+                <Form.Label>Cantidad</Form.Label>
                 <Form.Control
-                  required
                   type="text"
-                  placeholder="Last name"
-                  defaultValue="Otto"
+                  placeholder="Cantidad"
+                  required
                 />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                <Form.Label>Username</Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                  <Form.Control
-                    type="text"
-                    placeholder="Username"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a username.
-                  </Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group>
-            </Row>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="6" controlId="validationCustom03">
-                <Form.Label>City</Form.Label>
-                <Form.Control type="text" placeholder="City" required />
                 <Form.Control.Feedback type="invalid">
-                  Please provide a valid city.
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="3" controlId="validationCustom04">
-                <Form.Label>State</Form.Label>
-                <Form.Control type="text" placeholder="State" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid state.
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="3" controlId="validationCustom05">
-                <Form.Label>Zip</Form.Label>
-                <Form.Control type="text" placeholder="Zip" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid zip.
+                  Inserta una cantidad
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-            <Form.Group className="mb-3">
-              <Form.Check
-                required
-                label="Agree to terms and conditions"
-                feedback="You must agree before submitting."
-                feedbackType="invalid"
-              />
+            <Form.Group as={Col} controlId="validationCustom02">
+            <Form.Label>Descripción</Form.Label>
+              <FloatingLabel controlId="floatingTextarea2" label="">
+                <Form.Control
+                  as="textarea"
+                  placeholder="Leave a comment here"
+                  style={{ height: '100px' }}
+                  required
+                />
+              </FloatingLabel>
+              <Form.Control.Feedback>Bien!</Form.Control.Feedback>
             </Form.Group>
-            <Button type="submit">Submit form</Button>
+            {/* <Button type="submit">Submit form</Button> */}
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={exit}>
             Cancelar
           </Button>
-          <Button variant="primary">Guardar</Button>
+          <Button variant="primary" onClick={handleSubmit}>Guardar</Button>
         </Modal.Footer>
       </Modal>
     </>
