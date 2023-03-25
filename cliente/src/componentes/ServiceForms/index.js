@@ -2,15 +2,15 @@ import { useState } from 'react';
 import Servicio from 'services/servicios';
 import './index.css';
 
-export default function Forms({ tipoServicio, precio, hide }) {
-    const [cantidad, setCantidad] = useState('');
-    const [descripcion, setDescripcion] = useState('');
-    const [descripcionu, setDescripcionU] = useState('');
+export default function Forms({ tipoServicio, preciou, preciot ,hide }) {
+    const [cantidad, setCantidad] = useState(1);
+    const [descripcion, setDescripcion] = useState(false);
+    const [descripcionu, setDescripcionU] = useState(false);
     const [medida, setMedida] = useState('');
     const [corte, setCorte] = useState('');
-    const [precioU, setPrecioU] = useState('');
-    const [precioT, setPrecioT] = useState('');
-    const [anticipo, setAnticipo] = useState('');
+    const [precioU, setPrecioU] = useState('Precio unitario');
+    const [precioT, setPrecioT] = useState('Precio Total');
+    const [anticipo, setAnticipo] = useState(0);
     const [fechaS, setFechaS] = useState('');
     const estado = 'Pendiente'
 
@@ -18,7 +18,9 @@ export default function Forms({ tipoServicio, precio, hide }) {
     const hoy = fecha.toLocaleDateString('Mex');
 
     const getprecioT = () => {
-        setPrecioT(precio+cantidad)
+        setPrecioU(preciou)
+
+        setPrecioT((precioU*cantidad)-anticipo)
     }
 
     const handleSubmit = () => {
@@ -26,7 +28,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
         if(tipoServicio=='Corte cnc'){
             setDescripcion('Medida: '+ medida +'\n'+'Corte: ' + corte +'\n'+ descripcionu)
         }else{
-            setDescripcion('Medida: ' + medida + '\n' + descripcion)
+            setDescripcion('Medida: ' + medida + '\n' + descripcionu)
         }
         const servicio = new Servicio({
             Cantidad: cantidad,
@@ -36,11 +38,11 @@ export default function Forms({ tipoServicio, precio, hide }) {
             Anticipo: anticipo,
             FechaSolicitado: fechaS,
             PrecioTotal: precioT,
-            PrecioUnitario: precio
+            PrecioUnitario: preciou
         })
         
         console.log(tipoServicio)
-        console.log(precio)
+        console.log(preciou)
         console.log(precioT)
         console.log(descripcion)
         console.log(cantidad)
@@ -51,7 +53,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
 
     return (
         <>
-            <div className='container'>
+            <div className='container' onMouseMove={getprecioT} onClickCapture={getprecioT}>
                 <div className='row'>
                     <h2 className='title'>Solicitud de servicio</h2>
                 </div>
@@ -64,7 +66,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
-                            <input type="number" disabled placeholder={precio} onChange={getprecioT} name="PrecioU" className='input'
+                            <input type="number" disabled placeholder={preciou} onChange={()=>{setPrecioU(preciou); getprecioT()}} name="PrecioU" className='input'
                                ></input>
                         </div>
                     </div>
@@ -87,8 +89,8 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
-                            <input type="number" placeholder="Cantidad" name="Cantidad" className='input'
-                                onChange={(e) => setCantidad(e.target.value) && getprecioT}></input>
+                            <input type="number" placeholder="Cantidad" name="Cantidad" className='input' on
+                            onInputCapture={(e) =>{setCantidad(e.target.valueAsNumber); getprecioT()}}></input>
                         </div>
                     </div>
                     <div className='col-2'>
@@ -123,11 +125,11 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" placeholder="Anticipo" name="anticipo" className='input'
-                                onChange={(e) => setAnticipo(e.target.value)}></input>
+                                onChange={(e) => {setAnticipo(e.target.valueAsNumber); getprecioT()}}></input>
                         </div>
                     </div>
                     <div className='col-2'>
-                        <button className='button' precio={precioU} onClick={handleSubmit}>Solicitar</button>
+                        <button className='button' onClick={handleSubmit}>Solicitar</button>
                     </div>
                 </div>
             </div>

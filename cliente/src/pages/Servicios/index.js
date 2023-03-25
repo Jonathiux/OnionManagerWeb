@@ -10,7 +10,7 @@ import { useState } from 'react';
 export default function PaginaServicios() {
   const [Tipo, setTipo] = useState('Tipo Servicio')
   const [hide, sethide] = useState(true)
-  const [precio, setPrecio] = useState(0.0)
+  const [precio, setPrecio] = useState('Precio unitario')
 
   function handleClick(e) {
     setTipo(e.target.id)
@@ -80,7 +80,8 @@ export default function PaginaServicios() {
           <Forms
             tipoServicio={Tipo}
             hide={hide}
-            precio={precio}
+            preciou={precio}
+            preciot={precio}
           />
         </div>
       </div>
