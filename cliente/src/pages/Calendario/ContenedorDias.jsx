@@ -40,6 +40,33 @@ function ContenedorDias({contador}){
 
     const [cantidadDias, setCantidadDias] = useState(infoMes[variable].dias);
 
+    /*useEffect(() => {
+        const s = new Servicio({Anticipo:345,Cantidad:34,})
+        s.getServicios(s)
+            .then(resp => {
+                setServices(resp)
+                let totalIngresos = 0
+                let totalServicios = 0
+                let anios = []
+                resp.forEach((s) => {
+
+                    totalServicios++
+
+                    totalIngresos += parseInt(s.PrecioTotal)
+
+                    const anio = new Date(s.FechaEntrega).getFullYear()
+                    if (!anios.includes(anio)) {
+                        anios = [...anios, anio]
+                    }
+
+                })
+                setTotalServicios(totalServicios)
+                setTotalIngresos(totalIngresos)
+                setAnios(anios)
+            })
+    }, [])*/
+
+
     React.useEffect(() => {
         setCantidadDias(contador);
         variable = contador;
