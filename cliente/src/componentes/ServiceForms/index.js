@@ -5,7 +5,9 @@ import './index.css';
 export default function Forms({ tipoServicio, precio, hide }) {
     const [cantidad, setCantidad] = useState('');
     const [descripcion, setDescripcion] = useState('');
+    const [descripcionu, setDescripcionU] = useState('');
     const [medida, setMedida] = useState('');
+    const [corte, setCorte] = useState('');
     const [precioT, setPrecioT] = useState('');
     const [anticipo, setAnticipo] = useState('');
     const [fechaS, setFechaS] = useState('');
@@ -15,12 +17,17 @@ export default function Forms({ tipoServicio, precio, hide }) {
     const hoy = fecha.toLocaleDateString('Mex');
 
     const getprecioT = () => {
-        setPrecioT(cantidad*precio)
+        setPrecioT(cantidad * precio)
     }
 
     const handleSubmit = () => {
         setFechaS(hoy.toLocaleString('MEX'))
-            const servicio = new Servicio({
+        if(tipoServicio=='Corte cnc'){
+            setDescripcion('Medida: '+ medida +'\n'+'Corte: ' + corte +'\n'+ descripcionu)
+        }else{
+            setDescripcion('Medida: ' + medida + '\n' + descripcion)
+        }
+        const servicio = new Servicio({
             Cantidad: cantidad,
             TipoServicio: tipoServicio,
             Descripcion: descripcion,
@@ -29,15 +36,17 @@ export default function Forms({ tipoServicio, precio, hide }) {
             FechaSolicitado: fechaS,
             PrecioTotal: precioT,
             PrecioUnitario: precio
-            })
-            console.log(cantidad)
-            console.log(tipoServicio)
-            console.log(descripcion)
-            console.log(estado)
-            console.log(anticipo)
-            console.log(fechaS)
-            console.log(precioT)
-        }
+        })
+        
+        console.log(tipoServicio)
+        console.log(precio)
+        console.log(precioT)
+        console.log(descripcion)
+        console.log(cantidad)
+        console.log(estado)
+        console.log(anticipo)
+        console.log(fechaS)
+    }
 
     return (
         <>
@@ -55,7 +64,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" disabled placeholder={precio} name="PrecioU" className='input'
-                            onChange={getprecioT}></input>
+                                onChange={getprecioT}></input>
                         </div>
                     </div>
                     <div className='col-3'>
@@ -72,13 +81,13 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     <div className='col-5'>
                         <div className='input-wrapper'>
                             <input type="text" placeholder="Descripción" name="descripcion" className='input'
-                            onChange={(e) => setDescripcion(e.target.value)}></input>
+                                onChange={(e) => setDescripcionU(e.target.value)}></input>
                         </div>
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" placeholder="Cantidad" name="Cantidad" className='input'
-                            onChange={(e) => setCantidad(e.target.value) && getprecioT}></input>
+                                onChange={(e) => setCantidad(e.target.value) && getprecioT}></input>
                         </div>
                     </div>
                     <div className='col-2'>
@@ -99,7 +108,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     </div>
                     <div className='col-2'>
                         <div className='input-wrapper'>
-                            <select className='select' hidden={hide}>
+                            <select className='select' hidden={hide} onChange={(e) => setCorte(e.target.value)}>
                                 <option defaultValue={'Corte normal'}>Tipo de corte</option>
                                 <option value='Corte normal'>Corte normal</option>
                                 <option value='Corte de lujo Triangular'>Corte de lujo 1 Triangular</option>
@@ -113,7 +122,7 @@ export default function Forms({ tipoServicio, precio, hide }) {
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" placeholder="Anticipo" name="anticipo" className='input'
-                            onChange={(e) => setAnticipo(e.target.value)}></input>
+                                onChange={(e) => setAnticipo(e.target.value)}></input>
                         </div>
                     </div>
                     <div className='col-2'>

@@ -19,7 +19,8 @@ export default function PaginaServicios() {
     } else {
       sethide(true)
     }
-
+    setPrecio(e.target.precio)
+    console.log(e.target.precio)
   }
 
   return (
@@ -35,7 +36,7 @@ export default function PaginaServicios() {
               subtitle='Maquilado de rines de aluminio'
               descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas'
               img={Cortecnc}
-              precio='1200'
+              precio={'1200'}
             />
           </div>
           <div className='col' onClick={handleClick}>
