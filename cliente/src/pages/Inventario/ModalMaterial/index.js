@@ -1,25 +1,123 @@
-import React, { useState } from 'react'
-import {Button, Modal, Form,Row, Col, InputGroup} from 'react-bootstrap'
+import ToastAlert from 'componentes/ToastAlert'
+import React, { useEffect, useRef, useState } from 'react'
+import { Button, Modal, Form, Row, Col, FloatingLabel } from 'react-bootstrap'
 
-function ModalMaterial({ title, estado, handleClose }) {
+import Material from 'services/materiales'
 
+function ModalMaterial({ id = null, title, estado, handleClose, data }) {
+
+  const [toastAlert, setToastAlert] = useState({ color: null, estado: false, msg: null })
   const [validated, setValidated] = useState(false)
+  const refNombre = useRef()
+  const refDescripcion = useRef()
+  const refCantidad = useRef()
+
+  const handleToast = () => {
+    setToastAlert({ estado: !toastAlert.estado })
+  }
+
+  useEffect(() => {
+    if (id) {
+      const m = new Material({ id: id })
+      m.getSingleMaterial(m)
+        .then(resp => {
+          refCantidad.current.value = parseInt(resp[0].Cantidad)
+          refDescripcion.current.value = resp[0].Descripcion
+          refNombre.current.value = resp[0].Nombre
+          console.log(resp)
+        })
+    }
+  }, [id])
 
   const handleSubmit = (event) => {
     const form = event.currentTarget
     if (form.checkValidity() === false) {
       event.preventDefault()
       event.stopPropagation()
+
+    } else {
+      const m = new Material({
+        id: id,
+        cantidad: refCantidad.current.value,
+        descripcion: refDescripcion.current.value,
+        nombre: refNombre.current.value,
+      })
+
+      if (title === 'Editar Material') {
+        let IDMaterial = id
+        m.putMaterial(m)
+        .then(resp => {
+          if (resp.error) {
+            setToastAlert({ color: 'warning', estado: true, msg: resp.error })
+          } else {
+            exit()
+              setToastAlert({ color: 'info', estado: true, msg: resp.msg })
+              data(data => {
+                const newArray = data.map(material => {
+                  if (material.IDMaterial === IDMaterial) {
+                    console.log('editando')
+                    // Actualizar el material
+                    return {
+                      ...material, // Copiar todas las propiedades del material original
+                      Cantidad: refCantidad.current.value,
+                      Descripcion: refDescripcion.current.value,
+                      Nombre: refNombre.current.value,
+                    }
+                  } else {
+                    // No es el material que se quiere actualizar, devolver el original
+                    return material
+                  }
+                })
+
+                console.log(newArray) // El nuevo arreglo con el material actualizado
+                return newArray
+              })
+            }
+          })
+      } else {
+        m.postMaterial(m)
+          .then(resp => {
+            if (resp.error) {
+              setToastAlert({ color: 'warning', estado: true, msg: resp.error })
+            } else {
+              exit()
+              setToastAlert({ color: 'info', estado: true, msg: resp.msg })
+              data(currentData => {
+                const newMaterial = {
+                  Cantidad: refCantidad.current.value,
+                  Descripcion: refDescripcion.current.value,
+                  IDMaterial: resp.id,
+                  Nombre: refNombre.current.value,
+                  estado: 1
+                }
+                console.log(currentData)
+                return [...currentData, newMaterial]
+              })
+            }
+          })
+      }
     }
 
-    setValidated(true);
+    setValidated(true)
+  }
+
+  const exit = () => {
+    id = null
+    handleClose()
+    setValidated(false)
   }
 
   return (
     <>
+      <ToastAlert
+        color={toastAlert.color}
+        estado={toastAlert.estado}
+        mensaje={toastAlert.msg}
+        handleEstado={handleToast}
+      />
       <Modal
         show={estado}
-        onHide={handleClose}
+        onHide={exit}
         backdrop="static"
         keyboard={false}
       >
@@ -27,83 +125,52 @@ function ModalMaterial({ title, estado, handleClose }) {
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form noValidate validated={validated} /* onSubmit={handleSubmit} */>
             <Row className="mb-3">
-              <Form.Group as={Col} md="4" controlId="validationCustom01">
-                <Form.Label>First name</Form.Label>
+              <Form.Group as={Col} controlId="validationCustom01">
+                <Form.Label>Nombre</Form.Label>
                 <Form.Control
-                  required
                   type="text"
-                  placeholder="First name"
-                  defaultValue="Mark"
+                  placeholder="Nombre de Material"
+                  ref={refNombre}
+                  required
                 />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                {/* <Form.Control.Feedback>Muy bien!</Form.Control.Feedback> */}
               </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustom02">
-                <Form.Label>Last name</Form.Label>
+              <Form.Group as={Col} controlId="validationCustomUsername">
+                <Form.Label>Cantidad</Form.Label>
                 <Form.Control
+                  type="number"
+                  placeholder="Cantidad"
+                  ref={refCantidad}
                   required
-                  type="text"
-                  placeholder="Last name"
-                  defaultValue="Otto"
                 />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                <Form.Label>Username</Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                  <Form.Control
-                    type="text"
-                    placeholder="Username"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a username.
-                  </Form.Control.Feedback>
-                </InputGroup>
+                {/* <Form.Control.Feedback type="invalid">
+                  Inserta una cantidad
+                </Form.Control.Feedback> */}
               </Form.Group>
             </Row>
-            <Row className="mb-3">
-              <Form.Group as={Col} md="6" controlId="validationCustom03">
-                <Form.Label>City</Form.Label>
-                <Form.Control type="text" placeholder="City" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid city.
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="3" controlId="validationCustom04">
-                <Form.Label>State</Form.Label>
-                <Form.Control type="text" placeholder="State" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid state.
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} md="3" controlId="validationCustom05">
-                <Form.Label>Zip</Form.Label>
-                <Form.Control type="text" placeholder="Zip" required />
-                <Form.Control.Feedback type="invalid">
-                  Please provide a valid zip.
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-            <Form.Group className="mb-3">
-              <Form.Check
-                required
-                label="Agree to terms and conditions"
-                feedback="You must agree before submitting."
-                feedbackType="invalid"
-              />
+            <Form.Group as={Col} controlId="validationCustom02">
+              <Form.Label>Descripción</Form.Label>
+              <FloatingLabel controlId="floatingTextarea2" label="">
+                <Form.Control
+                  as="textarea"
+                  placeholder="Leave a comment here"
+                  style={{ height: '100px' }}
+                  ref={refDescripcion}
+                  required
+                />
+                {/* <Form.Control.Feedback>Bien!</Form.Control.Feedback> */}
+              </FloatingLabel>
             </Form.Group>
-            <Button type="submit">Submit form</Button>
+            {/* <Button type="submit">Submit form</Button> */}
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={exit}>
             Cancelar
           </Button>
-          <Button variant="primary">Guardar</Button>
+          <Button variant="primary" onClick={handleSubmit}>Guardar</Button>
         </Modal.Footer>
       </Modal>
     </>

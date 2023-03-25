@@ -1,20 +1,21 @@
-import React from 'react';
-import './Input.css';
+import React, { useRef } from 'react'
+import './Input.css'
 
-const Input =  ({ attributoo, handleChange,param}) => {
-    return (
-        <div className='imput-conteiner my-3'>
-      <input 
-      id={attributoo.id}
-      name={attributoo.name}
-      placeholder={attributoo.placeholder}
-      type={attributoo.type}
-      onChange={(e)  => handleChange(e.target.name,e.target.value)      } 
-      className={ param ? 'input-e rror' : 'regular-style'}
+const Input = ({ attributoo, state, param }) => {
+
+  const refInput = useRef()
+
+  return (
+    <div className='imput-conteiner my-3'>
+      <input
+        autoComplete="off"
+        ref={refInput}
+        placeholder={attributoo.placeholder}
+        onChange={(e) => state(refInput.current.value)}
+        className={param ? 'input-error' : 'regular-style'}
       />
-
-        </div>
-    );
+    </div>
+  );
 };
 
-export default Input;
+export default Input

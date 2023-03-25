@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "_ID": null,
-  "_Folio": 15,
+  "_Folio": 17,
   "_TipoServicio": 2,
   "_Cantidad": 2,
   "_Descripcion": "asdaesdas",
@@ -14,5 +14,6 @@ Content-Type: application/json
   "_FechaEntrega": "2023-03-03",
   "_FechaSolicitado": "2023-03-03",
   "_FechaInicio": "2023-03-03",
-  "_Estado": "Finalizado"
+  "_Estado": "Finalizado",
+  "_IDUsuario": 5
 }

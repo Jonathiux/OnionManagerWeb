@@ -1,0 +1,12 @@
+POST http://localhost:4000/api/usuarios/
+Content-Type: application/json
+
+{
+  "_IDUsuario": null,
+  "_Nombre": "dsdf",
+  "_Apellidos": "ssdf",
+  "_Telefono": 7518665,
+  "_Username": "Tadashid",
+  "_Contrasena": "rootkalid",
+  "_TipoUsuario": null
+}

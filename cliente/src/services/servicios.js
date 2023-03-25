@@ -4,7 +4,7 @@ const apiURL = `${URL}/servicios`
 
 class Servicio {
 
-    constructor({ ID = null, Folio = null, TipoServicio = null, Cantidad = null, Descripcion = null, PrecioUnitario = null, PrecioTotal = null, Anticipo = null, Observaciones = null, FechaEntrega = null, FechaSolicitado = null, FechaInicio = null, Estado = null }) {
+    constructor({ ID = null, Folio = null, TipoServicio = null, Cantidad = null, Descripcion = null, PrecioUnitario = null, PrecioTotal = null, Anticipo = null, Observaciones = null, FechaEntrega = null, FechaSolicitado = null, FechaInicio = null, Estado = null, IDUsuario = null }) {
         this._ID = ID
         this._Folio = Folio
         this._TipoServicio = TipoServicio
@@ -18,6 +18,7 @@ class Servicio {
         this._FechaSolicitado = FechaSolicitado
         this._FechaInicio = FechaInicio
         this._Estado = Estado
+        this._IDUsuario = IDUsuario
     }
 
     set id(newid) {
@@ -105,6 +106,12 @@ class Servicio {
     get estado() {
         return this._Estado
     }
+    set IDUsuario(newIDUsuario){
+        this._IDUsuario = newIDUsuario
+    }
+    get IDUsuario(){
+        return this._IDUsuario
+    }
 
     //----------------------------------------------------------------
     //----------Todos los servicios para los repoprtes------------------
@@ -112,6 +119,18 @@ class Servicio {
     getServicios(s = new Servicio({})) {
         
         return fetch(`${apiURL}`, {
+            method: 'GET'
+        })
+        .then((res) => res.json())
+            .then(res => { return res })
+        }
+        
+    //----------------------------------------------------------------
+    //----------retorna los servicios de un usuario------------------
+    //----------------------------------------------------------------
+    getServiciosCliente(s = new Servicio({})) {
+        
+        return fetch(`${apiURL}/${s._IDUsuario}`, {
             method: 'GET'
         })
             .then((res) => res.json())
