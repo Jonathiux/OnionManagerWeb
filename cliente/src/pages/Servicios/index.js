@@ -8,8 +8,8 @@ import './index.css';
 import { useState } from 'react';
 
 export default function PaginaServicios() {
-  const [Tipo, setTipo] = useState('Tipo Servicio')
-  const [hide, sethide] = useState(true)
+  const [Tipo, setTipo] = useState('Tipo de servicio')
+  const [hide, sethide] = useState(+true)
   const [precio, setPrecio] = useState('Precio unitario')
 
   function handleClick(e) {
@@ -17,21 +17,22 @@ export default function PaginaServicios() {
     switch(e.target.id){
       case 'Corte cnc':
         setPrecio(1500.0)
-        sethide(false)
+        sethide(+false)
         break
       case 'Rectificar':
         setPrecio(700.0)
-        sethide(true)
+        sethide(+true)
         break
       case 'Modificación':
         setPrecio(1000.0)
-        sethide(true)
+        sethide(+true)
         break
       case 'Ensanchar':
         setPrecio(600.0)
-        sethide(true)
+        sethide(+true)
         break
-
+      default:
+        break
     }
   }
 

@@ -12,7 +12,6 @@ export default function CardService(props) {
     for(let i=0; i<doc.length; i++){
       const hijo = doc[i].childNodes
       if(hijo[0].className==='card'){
-        console.log(hijo[0])
         hijo[0].className='card2'
       }
     }
