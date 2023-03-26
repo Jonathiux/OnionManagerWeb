@@ -1,9 +1,12 @@
+import userEvent from '@testing-library/user-event';
+import useUser from 'hooks/useUser';
 import { useState } from 'react';
 import Servicio from 'services/servicios';
 import './index.css';
 
-export default function Forms({ tipoServicio, preciou, preciot ,hide }) {
+export default function Forms({ tipoServicio, preciou, hide }) {
     const [cantidad, setCantidad] = useState(1);
+    const [idServicio, setIdServicio] = useState(1);
     const [descripcion, setDescripcion] = useState(false);
     const [descripcionu, setDescripcionU] = useState(false);
     const [medida, setMedida] = useState('');
@@ -14,41 +17,57 @@ export default function Forms({ tipoServicio, preciou, preciot ,hide }) {
     const [fechaS, setFechaS] = useState('');
     const estado = 'Pendiente'
 
+    const { user } = useUser()
+    let idusuario = user.id
+
     const fecha = new Date();
-    const hoy = fecha.toLocaleDateString('Mex');
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth()+1;
+    const year = fecha.getFullYear();
 
     const getprecioT = () => {
         setPrecioU(preciou)
-
-        setPrecioT((precioU*cantidad)-anticipo)
+        setPrecioT((precioU * cantidad) - anticipo)
     }
 
     const handleSubmit = () => {
-        setFechaS(hoy.toLocaleString('MEX'))
-        if(tipoServicio=='Corte cnc'){
-            setDescripcion('Medida: '+ medida +'\n'+'Corte: ' + corte +'\n'+ descripcionu)
-        }else{
-            setDescripcion('Medida: ' + medida + '\n' + descripcionu)
+        const folio = `${idusuario}${idServicio}`
+        setFechaS(`${year}-${mes}-${dia}`)
+        switch (tipoServicio) {
+            case 'Corte cnc':
+                setIdServicio(1)
+                setDescripcion('Medida: ' + medida + '\n' + 'Corte: ' + corte + '\n' + descripcionu)
+                break
+            case 'Rectificar':
+                setIdServicio(2)
+                setDescripcion('Medida: ' + medida + '\n' + descripcionu)
+                break
+            case 'Modificación':
+                setIdServicio(3)
+                setDescripcion('Medida: ' + medida + '\n' + descripcionu)
+                break
+            case 'Ensanchar':
+                setIdServicio(4)
+                setDescripcion('Medida: ' + medida + '\n' + descripcionu)
+                break
         }
-        const servicio = new Servicio({
+        const s = new Servicio({
+            ID: null,
+            Folio: folio,
+            TipoServicio: idServicio,
             Cantidad: cantidad,
-            TipoServicio: tipoServicio,
             Descripcion: descripcion,
-            Estado: estado,
-            Anticipo: anticipo,
-            FechaSolicitado: fechaS,
+            PrecioUnitario: preciou,
             PrecioTotal: precioT,
-            PrecioUnitario: preciou
+            Anticipo: anticipo,
+            Observaciones: 'ninguna',
+            FechaEntrega: null,
+            FechaSolicitado: fechaS,
+            FechaInicio: null,
+            Estado: estado,
+            IDUsuario: idusuario,
         })
-        
-        console.log(tipoServicio)
-        console.log(preciou)
-        console.log(precioT)
-        console.log(descripcion)
-        console.log(cantidad)
-        console.log(estado)
-        console.log(anticipo)
-        console.log(fechaS)
+        s.postServicios(s)
     }
 
     return (
@@ -66,8 +85,8 @@ export default function Forms({ tipoServicio, preciou, preciot ,hide }) {
                     </div>
                     <div className='col-3'>
                         <div className='input-wrapper2'>
-                            <input type="number" disabled placeholder={preciou} onChange={()=>{setPrecioU(preciou); getprecioT()}} name="PrecioU" className='input'
-                               ></input>
+                            <input type="number" disabled placeholder={preciou} onChange={() => { setPrecioU(preciou); getprecioT() }} name="PrecioU" className='input'
+                            ></input>
                         </div>
                     </div>
                     <div className='col-3'>
@@ -90,7 +109,7 @@ export default function Forms({ tipoServicio, preciou, preciot ,hide }) {
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" placeholder="Cantidad" name="Cantidad" className='input' on
-                            onInputCapture={(e) =>{setCantidad(e.target.valueAsNumber); getprecioT()}}></input>
+                                onInputCapture={(e) => { setCantidad(e.target.valueAsNumber); getprecioT() }}></input>
                         </div>
                     </div>
                     <div className='col-2'>
@@ -125,7 +144,7 @@ export default function Forms({ tipoServicio, preciou, preciot ,hide }) {
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <input type="number" placeholder="Anticipo" name="anticipo" className='input'
-                                onChange={(e) => {setAnticipo(e.target.valueAsNumber); getprecioT()}}></input>
+                                onChange={(e) => { setAnticipo(e.target.valueAsNumber); getprecioT() }}></input>
                         </div>
                     </div>
                     <div className='col-2'>

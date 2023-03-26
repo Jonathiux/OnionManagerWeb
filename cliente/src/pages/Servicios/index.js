@@ -33,7 +33,6 @@ export default function PaginaServicios() {
         break
 
     }
-    console.log(precio)
   }
 
   return (
@@ -81,7 +80,6 @@ export default function PaginaServicios() {
             tipoServicio={Tipo}
             hide={hide}
             preciou={precio}
-            preciot={precio}
           />
         </div>
       </div>
