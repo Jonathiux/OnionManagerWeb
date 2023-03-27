@@ -5,7 +5,7 @@ function ComponenteDia({dia, clase, claseContainer, folio}){
     return(
         <div className={claseContainer}>
             <h4 className="numero-dia">{dia}</h4>
-            <h4 className={clase}>{folio}</h4>
+            <h4 className={clase}>Folio: {folio}</h4>
         </div>
     );
 }

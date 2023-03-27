@@ -20,7 +20,7 @@ const mesInfo = [
 ];
 
 function TituloMes(){
-    const nuevoContador = mesInfo[2].valor;
+    const nuevoContador = mesInfo[3].valor;
     const [contador, setContador] = useState(nuevoContador);
 
     const handleAumentar = () => {

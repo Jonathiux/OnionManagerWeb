@@ -5,7 +5,7 @@ function ServicioLista(props){
     return(
         <section className="lista"> 
             <ul>
-                {props.children};
+                {props.children}
             </ul>
         </section>
     );

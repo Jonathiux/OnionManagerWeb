@@ -1,71 +1,152 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
+import Servicio from 'services/servicios'
 import ComponenteDia from './ComponenteDia';
 import './contenedorDias.css';
 
 const infoMes = [
-    {nombre: 'Enero', dias: 31, comienza: 'domingo', diasConServicio: [], pendiente: []},
-    {nombre: 'Febrero', dias: 28, comienza: 'miercoles', diasConServicio: [28, 10], pendiente: []},
-    {nombre: 'Marzo', dias: 31, comienza: 'miercoles', diasConServicio: [28, 21, 12, 5, 4], pendiente: [2, 6]},
-    {nombre: 'Abril', dias: 30, comienza: 'sabado', diasConServicio: [], pendiente: []},
-    {nombre: 'Mayo', dias: 31, comienza: 'lunes', diasConServicio: [], pendiente: []},
-    {nombre: 'Junio', dias: 30, comienza: 'jueves', diasConServicio: [], pendiente: []},
-    {nombre: 'Julio', dias: 31, comienza: 'sabado', diasConServicio: [], pendiente: []},
-    {nombre: 'Agosto', dias: 31, comienza: 'martes', diasConServicio: [], pendiente: []},
-    {nombre: 'Septiembre', dias: 30, comienza: 'viernes', diasConServicio: [], pendiente: []},
-    {nombre: 'Octubre', dias: 31, comienza: 'domingo', diasConServicio: [], pendiente: []},
-    {nombre: 'Noviembre', dias: 30, comienza: 'miercoles', diasConServicio: [], pendiente: []},
-    {nombre: 'Diciembre', dias: 31, comienza: 'viernes', diasConServicio: [], pendiente: []},
+    {nombre: 'Enero', dias: 31, comienza: 'domingo'},
+    {nombre: 'Febrero', dias: 28, comienza: 'miercoles'},
+    {nombre: 'Marzo', dias: 31, comienza: 'miercoles'},
+    {nombre: 'Abril', dias: 30, comienza: 'sabado'},
+    {nombre: 'Mayo', dias: 31, comienza: 'lunes'},
+    {nombre: 'Junio', dias: 30, comienza: 'jueves'},
+    {nombre: 'Julio', dias: 31, comienza: 'sabado'},
+    {nombre: 'Agosto', dias: 31, comienza: 'martes'},
+    {nombre: 'Septiembre', dias: 30, comienza: 'viernes'},
+    {nombre: 'Octubre', dias: 31, comienza: 'domingo'},
+    {nombre: 'Noviembre', dias: 30, comienza: 'miercoles'},
+    {nombre: 'Diciembre', dias: 31, comienza: 'viernes'},
 ];
-                                   const arreglo =  {
-                                        dia:[10, 3, 27, 22],
-                                        folio: [''],
-                                    };
-const diasServiciosActivos = [
-    {mes: 'Enero', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Febrero', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Marzo', diaCompletado: {dia: arreglo.dia, folio: ['H1LC', 'JIJIJ',  'JKAS2']}, diaPendiente: {dia: [3, 18], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Abril', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Mayo', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Junio', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Julio', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Agosto', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Septiembre', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Octubre', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Noviembre', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-    {mes: 'Diciembre', diaCompletado: {dia: [28, 10], folio: ['H1LC', 'JKAS2']}, diaPendiente: {dia: [2, 6], folio: ['TLSQ', 'KIE4']}},
-]
 
 function ContenedorDias({contador}){
     let variable = contador;
 
     const [cantidadDias, setCantidadDias] = useState(infoMes[variable].dias);
+    const [services, setServices] = useState([])
+    const [diaE, setDiaE] = useState([])
+    const [dateE, setDateE] = useState([])
+    const [diaF, setDiaF] = useState([])
+    const [dateF, setDateF] = useState([])
+    const [diaMar, setDiaMar] = useState([])
+    const [dateMar, setDateMar] = useState([])
 
-    /*useEffect(() => {
-        const s = new Servicio({Anticipo:345,Cantidad:34,})
+    const [folioEneroP, setFolioEneroP] = useState([])
+    const [dateEneroP, setDateEneroP] = useState([])
+    const [folioFebreroP, setFolioFebreroP] = useState([])
+    const [dateFebreroP, setDateFebreroP] = useState([])
+    const [folioMarzoP, setFolioMarzoP] = useState([])
+    const [dateMarzoP, setDateMarzoP] = useState([])
+
+    const arregloEnero =  {
+        dia: dateE,
+        folio: diaE,
+        diaP: dateEneroP,
+        folioP: folioEneroP,
+    };
+
+    const arregloFebrero = {
+        dia: dateF,
+        folio: diaF,
+        diaP: dateFebreroP,
+        folioP: folioFebreroP,
+    }
+
+    const arregloMarzo = {
+        dia: dateMar,
+        folio: diaMar,
+        diaP: dateMarzoP,
+        folioP: folioMarzoP,
+    }
+
+    const diasServiciosActivos = [
+        {mes: 'Enero', diaCompletado: {dia: arregloEnero.dia, folio: arregloEnero.folio}, diaPendiente: {dia: arregloEnero.diaP, folio: arregloEnero.folioP}},
+        {mes: 'Febrero', diaCompletado: {dia: arregloFebrero.dia, folio: arregloFebrero.folio}, diaPendiente: {dia: arregloFebrero.diaP, folio: arregloFebrero.folioP}},
+        {mes: 'Marzo', diaCompletado: {dia: arregloMarzo.dia, folio: arregloMarzo.folio}, diaPendiente: {dia: arregloMarzo.diaP, folio: arregloMarzo.folioP}},
+        {mes: 'Abril', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Mayo', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Junio', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Julio', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Agosto', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Septiembre', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Octubre', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Noviembre', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+        {mes: 'Diciembre', diaCompletado: {dia: [], folio: []}, diaPendiente: {dia: [], folio: []}},
+    ]
+    
+
+    React.useEffect(() => {
+        const s = new Servicio({})
         s.getServicios(s)
             .then(resp => {
-                setServices(resp)
-                let totalIngresos = 0
-                let totalServicios = 0
-                let anios = []
-                resp.forEach((s) => {
+                setServices(resp)  
+                let folios = []
+                let diaEnero = []
+                let foliosFe = []
+                let diaFebrero = []
+                let foliosMar = []
+                let diaMarzo = []
 
-                    totalServicios++
+                let foliosEneroP = []
+                let diaEneroP = []
+                let foliosFebreroP = []
+                let diaFebreroP = []
+                let foliosMarzoP = []
+                let diaMarzoP = []
 
-                    totalIngresos += parseInt(s.PrecioTotal)
-
-                    const anio = new Date(s.FechaEntrega).getFullYear()
-                    if (!anios.includes(anio)) {
-                        anios = [...anios, anio]
+                services.forEach((s) => {
+            
+                    if(s.FechaEntrega.includes('2023') && s.FechaEntrega.includes('-01-')){
+                        let fecha = new Date(s.FechaEntrega)
+                        let valor = fecha.getDate()
+                        diaEnero.push(valor)
+                        folios.push(s.Folio)
+                        setDiaE(folios)
+                        setDateE(diaEnero)
                     }
-
+                    if(s.FechaEntrega.includes('2023') && s.FechaEntrega.includes('-02-')){
+                        let fecha = new Date(s.FechaEntrega)
+                        let valor = fecha.getDate()
+                        diaFebrero.push(valor)
+                        foliosFe.push(s.Folio)
+                        setDiaF(foliosFe)
+                        setDateF(diaFebrero)
+                    }
+                    if(s.FechaEntrega.includes('2023') && s.FechaEntrega.includes('-03-')){
+                        let fecha = new Date(s.FechaEntrega)
+                        let valor = fecha.getDate()
+                        diaMarzo.push(valor)
+                        foliosMar.push(s.Folio)
+                        setDiaMar(foliosMar)
+                        setDateMar(diaMarzo)
+                    }
+                    if(s.FechaInicio.includes('2023') && s.FechaInicio.includes('-01-')){
+                        let fecha = new Date(s.FechaEntrega)
+                        let valor = fecha.getDate()
+                        diaEneroP.push(valor)
+                        foliosEneroP.push(s.Folio)
+                        setFolioEneroP(foliosEneroP)
+                        setDateEneroP(diaEneroP)
+                    }
+                    if(s.FechaInicio.includes('2023') && s.FechaInicio.includes('-02-')){
+                        let fecha = new Date(s.FechaEntrega)
+                        let valor = fecha.getDate()
+                        diaFebreroP.push(valor)
+                        foliosFebreroP.push(s.Folio)
+                        setFolioFebreroP(foliosFebreroP)
+                        setDateFebreroP(diaFebreroP)
+                    }
+                    if(s.FechaInicio.includes('2023') && s.FechaInicio.includes('-03-')){
+                        let fecha = new Date(s.FechaEntrega)
+                        let valor = fecha.getDate()
+                        diaMarzoP.push(valor)
+                        foliosMarzoP.push(s.Folio)
+                        setFolioMarzoP(foliosMarzoP)
+                        setDateMarzoP(diaMarzoP)
+                    }
                 })
-                setTotalServicios(totalServicios)
-                setTotalIngresos(totalIngresos)
-                setAnios(anios)
+                
             })
-    }, [])*/
-
+    }, [contador])
 
     React.useEffect(() => {
         setCantidadDias(contador);
