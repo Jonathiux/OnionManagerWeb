@@ -46,7 +46,7 @@ const MiCuenta = () => {
                     <Input
                         value={apellidos}
                     />
-                    <Label text='Numero' />
+                    <Label text='Número' />
                     <Input
                         value={telefono}
                     />
