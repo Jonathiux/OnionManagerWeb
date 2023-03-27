@@ -5,7 +5,7 @@ import './index.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Forms({ tipoServicio, preciou, hide }) {
+export default function Forms({ tipoServicio, preciou, hide, disabled }) {
     const [cantidad, setCantidad] = useState(1);
     const [idServicio, setIdServicio] = useState(1);
     const [descripcion, setDescripcion] = useState(false);
@@ -32,8 +32,13 @@ export default function Forms({ tipoServicio, preciou, hide }) {
         setFechaS(`${year}-${mes}-${dia}`)
     }
 
-    const showToastMessage = () => {
+    const showToastMessageS = () => {
         toast.success('Servicio registrado con éxito', {
+            position: toast.POSITION.TOP_CENTER
+        });
+    }
+    const showToastMessageE = () => {
+        toast.error('Error al registrar el servicio verifica los datos.', {
             position: toast.POSITION.TOP_CENTER
         });
     }
@@ -78,7 +83,13 @@ export default function Forms({ tipoServicio, preciou, hide }) {
             IDUsuario: idusuario,
         })
         s.postServicios(s)
-        console.log(s.postServicios.res)
+        .then(resp => {
+            if(resp.error){
+                showToastMessageE()
+            }else{
+                showToastMessageS()
+            }
+        })
     }
 
     return (
@@ -168,7 +179,7 @@ export default function Forms({ tipoServicio, preciou, hide }) {
                     </div>
                     <div className='col-3'>
                         <h5 className='labels'>.</h5>
-                        <button className='button' onClick={() => { handleSubmit(); showToastMessage() }}>Solicitar</button>
+                        <button hidden={disabled ? true : false} className='button' onClick={handleSubmit}>Solicitar</button>
                         <ToastContainer />
                     </div>
                 </div>

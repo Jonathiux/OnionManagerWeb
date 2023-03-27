@@ -10,6 +10,7 @@ import { useState } from 'react';
 export default function PaginaServicios() {
   const [Tipo, setTipo] = useState('Tipo de servicio')
   const [hide, sethide] = useState(+true)
+  const [disabled, setDisabled] = useState(+true)
   const [precio, setPrecio] = useState('Precio unitario')
 
   function handleClick(e) {
@@ -18,20 +19,25 @@ export default function PaginaServicios() {
       case 'Corte cnc':
         setPrecio(1500.0)
         sethide(+false)
+        setDisabled(+false)
         break
       case 'Rectificar':
         setPrecio(700.0)
         sethide(+true)
+        setDisabled(+false)
         break
       case 'Modificación':
         setPrecio(1000.0)
         sethide(+true)
+        setDisabled(+false)
         break
       case 'Ensanchar':
         setPrecio(600.0)
         sethide(+true)
+        setDisabled(+false)
         break
       default:
+        setDisabled(+true)
         break
     }
   }
@@ -78,6 +84,7 @@ export default function PaginaServicios() {
         </div>
         <div>
           <Forms
+            disabled={disabled}
             tipoServicio={Tipo}
             hide={hide}
             preciou={precio}
