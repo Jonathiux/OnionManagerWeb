@@ -1,9 +1,9 @@
-/* .finanzas-container{
-    background-color: #FD811A;
-} */
+.finanzas-container{
+    background-color: aliceblue !important;
+}
 
 .finanzas-container .title-container{
-    background-color: #D48615;
+    background-color: rgb(157, 202, 241);
     width: 30%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -17,7 +17,7 @@
 }
 
 .info-card{
-    background-color: #f6b21991;
+    background-color: rgb(200, 223, 243);
     margin: 5px;
     border-radius: 10px;
     padding: 10px;
@@ -27,7 +27,7 @@
 .grafica-container{
     height: 80%;
     border-radius: 10px;
-    background-color: #f6b21991;
+    background-color: rgb(200, 223, 243);
     margin: 5px;
 }
 
