@@ -1,10 +1,10 @@
-/* .container-inventario{
-    height: 80vh;
-} */
+.container-inventario{
+    background-color: white !important;
+}
 
 .body-inventario{
     border-radius: 10px;
-    background-color: rgb(254, 166 , 10,1);
+    background-color: aliceblue;
     height: 100%;
     padding: 20px;
 }

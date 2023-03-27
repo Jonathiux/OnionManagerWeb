@@ -25,7 +25,7 @@ function Finanzas(params) {
     const handleRender = () => setRender(!render)
 
     useEffect(() => {
-        const s = new Servicio({Anticipo:345,Cantidad:34,})
+        const s = new Servicio({})
         s.getServicios(s)
             .then(resp => {
                 setServices(resp)
@@ -179,6 +179,17 @@ function Finanzas(params) {
         // eslint-disable-next-line
     }, [render])
 
+    const formatMoneda = (n)=>{
+        const formato = n.toLocaleString('es-MX', {
+            style: 'currency',
+            currency: 'MXN'
+        })
+        return formato
+    }
+
+    const s = new Servicio({})
+    s.getServiciosCliente({IDUsuario:5})
+
     return (
         <>
             <div className='finanzas-container' >
@@ -224,11 +235,11 @@ function Finanzas(params) {
                     <div className='columna body-container'>
                         <div className='cards'>
                             <div className='info-card'>
-                                <p>${TotalIngresos}</p>
+                                <p>{formatMoneda(TotalIngresos)}</p>
                                 <p>Total de Ingresos</p>
                             </div>
                             <div className='info-card'>
-                                <p>${TotalIngresos * .70}</p>
+                                <p>{formatMoneda(TotalIngresos * .70)}</p>
                                 <p>Total de Gastos</p>
                             </div>
                             <div className='info-card'>
@@ -236,7 +247,7 @@ function Finanzas(params) {
                                 <p>Total de Servicios</p>
                             </div>
                             <div className='info-card'>
-                                <p>${TotalIngresos * .30}</p>
+                                <p>{formatMoneda(TotalIngresos * .30)}</p>
                                 <p>Total de Beneficio</p>
                             </div>
                         </div>
