@@ -62,7 +62,7 @@ const Registrarse = () => {
                             id: 'usuario',
                             name: 'usuario',
                             type: 'text',
-                            placeholder: 'Ingrese Nombre de usuario',
+                            placeholder: 'Ingrese nombre de usuario',
                         }}
                         state={setUsername}
                         handleChange={handleChange}
@@ -73,7 +73,7 @@ const Registrarse = () => {
                             id: 'contraseña',
                             name: 'contraseña',
                             type: 'password',
-                            placeholder: 'Ingrese Contraseña',
+                            placeholder: 'Ingrese contraseña',
                         }}
                         state={setPassword}
                         handleChange={handleChange}
@@ -84,7 +84,7 @@ const Registrarse = () => {
                             id: 'nombre',
                             name: 'nombre',
                             type: 'name',
-                            placeholder: 'Ingrese Nombre',
+                            placeholder: 'Ingrese nombre',
                         }}
                         state={setNombre}
                         handleChange={handleChange}
@@ -95,7 +95,7 @@ const Registrarse = () => {
                             id: 'apellido',
                             name: 'apellido',
                             type: 'last name',
-                            placeholder: 'Ingrese Apellido',
+                            placeholder: 'Ingrese apellido',
                         }}
                         state={setApellidos}
                         handleChange={handleChange}
@@ -106,14 +106,14 @@ const Registrarse = () => {
                             id: 'Numero',
                             name: 'numero',
                             type: 'num',
-                            placeholder: 'Ingrese Numero',
+                            placeholder: 'Ingrese numero',
                         }}
                         state={setTelefono}
                         handleChange={handleChange}
                     />
                     <div className='button-registrar'>
                         <button onClick={handleSubmit} className='sub-button22'>
-                            --REGISTRAR--
+                            -- REGISTRAR --
                         </button>
                     </div>
                 </div>

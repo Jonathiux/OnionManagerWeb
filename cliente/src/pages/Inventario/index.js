@@ -15,7 +15,7 @@ function Inventario(params) {
     const [modalMaterial, setModalMaterial] = useState({ title: null, estado: false })
 
     const m = useMemo(() => new Material({}), [])
-    const headers = useMemo(() => ['#', 'Nombre', 'Descripcion', 'Existencias', 'Acciones'], [])
+    const headers = useMemo(() => ['#', 'Nombre', 'Descripción', 'Existencias', 'Acciones'], [])
 
     useEffect(() => {
         m.getMateriales()
