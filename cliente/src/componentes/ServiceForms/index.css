@@ -11,6 +11,11 @@
   cursor: pointer;
 }
 
+.chupapi .labels{
+  margin-left: 30px;
+  margin-bottom: 2px;
+}
+
 .chupapi .input-wrapper input:focus {
   outline-color: lightslategrey;
 }

@@ -8,18 +8,32 @@ import './index.css';
 import { useState } from 'react';
 
 export default function PaginaServicios() {
-  const [Tipo, setTipo] = useState('Tipo Servicio')
-  const [hide, sethide] = useState(true)
-  const [precio, setPrecio] = useState(0.0)
+  const [Tipo, setTipo] = useState('Tipo de servicio')
+  const [hide, sethide] = useState(+true)
+  const [precio, setPrecio] = useState('Precio unitario')
 
   function handleClick(e) {
     setTipo(e.target.id)
-    if (e.target.id === 'Corte cnc') {
-      sethide(false)
-    } else {
-      sethide(true)
+    switch(e.target.id){
+      case 'Corte cnc':
+        setPrecio(1500.0)
+        sethide(+false)
+        break
+      case 'Rectificar':
+        setPrecio(700.0)
+        sethide(+true)
+        break
+      case 'Modificación':
+        setPrecio(1000.0)
+        sethide(+true)
+        break
+      case 'Ensanchar':
+        setPrecio(600.0)
+        sethide(+true)
+        break
+      default:
+        break
     }
-
   }
 
   return (
@@ -35,7 +49,6 @@ export default function PaginaServicios() {
               subtitle='Maquilado de rines de aluminio'
               descripcion='Se maquila el rin en el cnc cambiando el aspecto de las ventilas'
               img={Cortecnc}
-              precio='1200'
             />
           </div>
           <div className='col' onClick={handleClick}>
@@ -67,7 +80,7 @@ export default function PaginaServicios() {
           <Forms
             tipoServicio={Tipo}
             hide={hide}
-            precio={precio}
+            preciou={precio}
           />
         </div>
       </div>
