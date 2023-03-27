@@ -39,20 +39,64 @@ class Material {
     //----------Todos los Materiales para inventario------------------
     //----------------------------------------------------------------
     getMateriales(m = new Material({})) {
-
+        
         return fetch(`${apiURL}`, {
             method: 'GET'
         })
-            .then((res) => res.json())
-            .then(this.fromAjaxResponseToProducts)
+        .then((res) => res.json())
+        .then(res=>{return res})
     }
-
+    
+    //----------------------------------------------------------------
+    //----------Elimina un material------------------
+    //----------------------------------------------------------------
     deleteMaterial(m = new Material({})){
         return fetch(`${apiURL}/${m._id}`,{
             method:'DELETE'
         })
+        .then(resp=>resp.json())
+        .then(res=>{return res})
+    }
+    
+    //----------------------------------------------------------------
+    //----------retorna informacion de un solo material------------------
+    //----------------------------------------------------------------
+    getSingleMaterial(m = new Material({})){
+        return fetch(`${apiURL}/${m._id}`,{
+            method:'GET'
+        })
+        .then(resp=>resp.json())
+        .then(res=>{return res})
+    }
+    
+    //----------------------------------------------------------------
+    //----------crea un material------------------
+    //----------------------------------------------------------------
+    postMaterial(m = new Material({})){
+        return fetch(`${apiURL}/`,{
+            method:'POST',
+            body: JSON.stringify(m),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(resp=>resp.json())
+        .then(res=>{return res})
+    }
+    
+    //----------------------------------------------------------------
+    //---------------------Edita un material--------------------------
+    //----------------------------------------------------------------
+    putMaterial(m = new Material({})){
+        return fetch(`${apiURL}/`,{
+            method:'PUT',
+            body: JSON.stringify(m),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(resp=>resp.json())
-            .then(this.fromAjaxResponseToProducts)
+            .then(res=>{return res})
     }
 }
 

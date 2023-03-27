@@ -1,4 +1,4 @@
-.input-wrapper input {
+.chupapi .input-wrapper input {
   background-color: #eee;
   border: none;
   margin: 20px;
@@ -11,30 +11,16 @@
   cursor: pointer;
 }
 
-.input-wrapper input:focus {
+.chupapi .labels{
+  margin-left: 30px;
+  margin-bottom: 2px;
+}
+
+.chupapi .input-wrapper input:focus {
   outline-color: lightslategrey;
 }
 
-.input-wrapper2 input {
-  background-color: #eee;
-  border: none;
-  margin: 20px;
-  padding: 1rem;
-  font-size: 1rem;
-  width: 250px;
-  border-radius: 1rem;
-  color: lightslategray;
-  box-shadow: 0 0.4rem #dfd9d9;
-  cursor: pointer;
-}
-
-.input-wrapper2 input:focus {
-  outline-color: lightslategrey;
-}
-
-.select {
-  height: 60px;
-  border-radius: 10px;
+.chupapi .input-wrapper2 input {
   background-color: #eee;
   border: none;
   margin: 20px;
@@ -47,7 +33,26 @@
   cursor: pointer;
 }
 
-.container {
+.chupapi .input-wrapper2 input:focus {
+  outline-color: lightslategrey;
+}
+
+.chupapi .select {
+  height: 60px;
+  border-radius: 10px;
+  background-color: #eee;
+  border: none;
+  margin: 20px;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 150px;
+  border-radius: 1rem;
+  color: lightslategray;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+}
+
+.chupapi .container {
   background-color: aliceblue;
   box-shadow: 0 0.4rem #dfd9d9;
   border: 10px;
@@ -59,7 +64,7 @@
   border-radius: 20px;
 }
 
-.button {
+.chupapi .button {
   height: 60px;
   border-radius: 10px;
   background-color: #b2ec66;
@@ -74,18 +79,18 @@
   cursor: pointer;
 }
 
-.title {
+.chupapi .title {
   margin: 10px;
   color: black;
   width: fit-content;
 }
 
-.col {
+.chupapi.col {
   width: 100%;
   margin: 10px;
 }
 
-.row {
+.chupapi .row {
   margin: 0%;
   width: 100%;
 }

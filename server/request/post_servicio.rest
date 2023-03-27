@@ -1,0 +1,19 @@
+POST http://localhost:4000/api/servicios/
+Content-Type: application/json
+
+{
+  "_ID": null,
+  "_Folio": 17,
+  "_TipoServicio": 2,
+  "_Cantidad": 2,
+  "_Descripcion": "asdaesdas",
+  "_PrecioUnitario": 45,
+  "_PrecioTotal": 234324,
+  "_Anticipo": 2323,
+  "_Observaciones": "asdsadasdas",
+  "_FechaEntrega": "2023-03-03",
+  "_FechaSolicitado": "2023-03-03",
+  "_FechaInicio": "2023-03-03",
+  "_Estado": "Finalizado",
+  "_IDUsuario": 5
+}

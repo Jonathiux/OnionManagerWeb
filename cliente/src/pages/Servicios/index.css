@@ -6,19 +6,19 @@
   height: 100%;
   width: 100%;
   box-shadow: 0 0.4rem #dfd9d9;
-  }
+}
 
-.col{
+.col {
   width: 100%;
   margin: 10px;
 }
 
-.row{
+.row {
   margin: 0%;
   width: 100%;
 }
 
-.text{
+.text {
   align-items: center;
   width: fit-content;
   margin-left: 35%;
