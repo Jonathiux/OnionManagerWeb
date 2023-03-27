@@ -2,6 +2,8 @@ import useUser from 'hooks/useUser';
 import { useState } from 'react';
 import Servicio from 'services/servicios';
 import './index.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Forms({ tipoServicio, preciou, hide }) {
     const [cantidad, setCantidad] = useState(1);
@@ -30,8 +32,13 @@ export default function Forms({ tipoServicio, preciou, hide }) {
         setFechaS(`${year}-${mes}-${dia}`)
     }
 
+    const showToastMessage = () => {
+        toast.success('Servicio registrado con éxito', {
+            position: toast.POSITION.TOP_CENTER
+        });
+    }
     const handleSubmit = () => {
-        const folio = `${idusuario}${idServicio}${precioT}${anticipo}${dia}`
+        const folio = `${idusuario}${idServicio}${anticipo}${dia}`
         switch (tipoServicio) {
             case 'Corte cnc':
                 setIdServicio(1)
@@ -71,6 +78,7 @@ export default function Forms({ tipoServicio, preciou, hide }) {
             IDUsuario: idusuario,
         })
         s.postServicios(s)
+        console.log(s.postServicios.res)
     }
 
     return (
@@ -97,7 +105,7 @@ export default function Forms({ tipoServicio, preciou, hide }) {
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <h5 className='labels'>Precio total</h5>
-                            <input type="number" disabled placeholder={precioT} name="precioT" className='input'
+                            <input type="number" disabled placeholder={precioT ? precioT :0} name="precioT" className='input'
                             ></input>
                         </div>
                     </div>
@@ -116,8 +124,8 @@ export default function Forms({ tipoServicio, preciou, hide }) {
                     <div className='col-3'>
                         <div className='input-wrapper2'>
                             <h5 className='labels'>Cantidad</h5>
-                            <input type="number" placeholder="Cantidad" name="Cantidad" className='input' on
-                                onInputCapture={(e) => { setCantidad(e.target.value); getprecioT() }}></input>
+                            <input type="number" placeholder="Cantidad" name="Cantidad" className='input'
+                                onChange={(e) => { setCantidad(e.target.value); getprecioT() }}></input>
                         </div>
                     </div>
                     <div className='col-2'>
@@ -160,7 +168,8 @@ export default function Forms({ tipoServicio, preciou, hide }) {
                     </div>
                     <div className='col-3'>
                         <h5 className='labels'>.</h5>
-                        <button className='button' onClick={handleSubmit}>Solicitar</button>
+                        <button className='button' onClick={() => { handleSubmit(); showToastMessage() }}>Solicitar</button>
+                        <ToastContainer />
                     </div>
                 </div>
             </div>
