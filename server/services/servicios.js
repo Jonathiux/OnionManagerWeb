@@ -4,7 +4,7 @@ export const getAll = () => {
   return new Promise((resolve, reject) => {
     conn.query('SELECT * FROM servicio', function (error, results, fields) {
       if (error) {
-        reject(error)
+        reject({error:error})
       } else {
         resolve(results)
       }
