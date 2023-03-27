@@ -179,7 +179,7 @@ function Finanzas(params) {
         // eslint-disable-next-line
     }, [render])
 
-    const formatMoneda = (n)=>{
+    const formatMoneda = (n) => {
         const formato = n.toLocaleString('es-MX', {
             style: 'currency',
             currency: 'MXN'
@@ -188,7 +188,7 @@ function Finanzas(params) {
     }
 
     const s = new Servicio({})
-    s.getServiciosCliente({IDUsuario:5})
+    s.getServiciosCliente({ IDUsuario: 5 })
 
     return (
         <>
