@@ -24,7 +24,7 @@ function Servicio(){
                     folio={service.folio}
                     imagen={service.folio}
                 />
-            ))}
+            ))} 
         </ServicioLista>
     );
 }
