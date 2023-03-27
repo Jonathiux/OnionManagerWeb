@@ -5,7 +5,7 @@ import Reparacion from './reparacion.jpg';
 
 function ServicioItem(props){
 
-    return(
+    return( 
         <li className="servicio-info">
             <div className="img">
                 <img src={Reparacion} alt="Imagen servicio" />
