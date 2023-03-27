@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, useHref } from 'react-router-dom'
 
-import ServiciosAdmin from 'componentes/Servicios'
+import ServiciosAdmin from 'pages/ServiciosCliente'
 import Nav from 'componentes/Nav'
 
 // import HomeCliente from 'pages/Home'
@@ -12,6 +12,7 @@ import Calendario from 'pages/Calendario'
 import Registrarse from 'pages/registrarse'
 import ErrorPage from 'pages/ErrorPage'
 import MiCuenta from 'pages/MiCuenta'
+import InicioCliente from 'pages/ServiciosCliente'
 
 import useUser from 'hooks/useUser'
 
@@ -46,7 +47,7 @@ function App() {
               (parseInt(user.tipo) === 0) &&
               <>
                 {/* Cliente */}
-                <Route path='/' element={<>Aqui estubiera el home del cliente</>} />
+                <Route path='/' element={<InicioCliente />} />
                 <Route path='/crear-servicio' element={<NewServicio />} />
               </>
             }

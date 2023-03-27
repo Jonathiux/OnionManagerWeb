@@ -1,16 +1,14 @@
 import React from "react";
 import './servicioItem.css';
-import Ensanchado from './Ensanchado.jpg';
+import Reparacion from './reparacion.jpg';
 
 
 function ServicioItem(props){
 
-    let claseImg = {Ensanchado};
-
     return(
         <li className="servicio-info">
             <div className="img">
-                <img src={Ensanchado} alt="Imagen servicio" />
+                <img src={Reparacion} alt="Imagen servicio" />
             </div>
             <div className="info">
                 <h3><strong>{props.servicio}</strong></h3>
